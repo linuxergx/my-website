@@ -119,7 +119,7 @@ ruler:
 
 #### 日志查询工具使用方式
 
-1. 登录http://192.168.22.123:13000地址  账号 dev 密码 dev@123
+1. 登录 http://192.168.22.123:13000  账号 dev 密码 dev@123
 2. 点击“探索” ![1750754520968](https://linuxergx.github.io/img/1750754520968.png)进行查询日志。
 3. 数据源选择Loki ![1750754688541](https://linuxergx.github.io/img/1750754688541.png)，可选择时间范围或快速搜索时间范围。![1750754780550](https://linuxergx.github.io/img/1750754780550.png)
 

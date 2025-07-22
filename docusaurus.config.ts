@@ -14,7 +14,7 @@ const config: Config = {
 
   // Set the production url of your site here
   url: 'https://linuxergx.github.io',  // 替换成你的域名
-  baseUrl: '/',
+  baseUrl: '/my-website/',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -42,14 +42,18 @@ const config: Config = {
           showReadingTime: true,
           readingTime: ({content, frontMatter, defaultReadingTime}) =>
             defaultReadingTime({content, locale: 'zh-Hans', options: {wordsPerMinute: 300}}),
+          postsPerPage: 10,
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: '全部文章',
+          tagsBasePath: 'tags',
+          archiveBasePath: 'archive',
           feedOptions: {
             type: ['rss', 'atom'],
-            title: '程少亭的博客',
-            description: '探索技术，热爱生活 🚀',
-            copyright: `Copyright © ${new Date().getFullYear()} 程少亭的博客`,
+            title: '程少亭的技术博客',
+            description: '分享 Linux、容器、数据库、编程等技术文章 🚀',
+            copyright: `Copyright © ${new Date().getFullYear()} 程少亭的技术博客`,
+            language: 'zh-CN',
           },
-          blogSidebarTitle: '全部文章',
-          blogSidebarCount: 'ALL',
           // Remove this to remove the "edit this page" links
           editUrl: 'https://github.com/linuxergx/my-website/tree/main',
         },
@@ -70,13 +74,42 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: '/blog', label: '博客 📝', position: 'left'},
-        {to: '/docs/intro', label: '文档 📚', position: 'left'},
-        {to: '/about', label: '关于我 👨‍💻', position: 'left'},
-        {to: '/blog/tags', label: '标签 🏷️', position: 'left'},
-        {to: '/blog/archive', label: '归档 📂', position: 'left'},
         {
-          href: 'https://github.com/linuxergx/my-website',
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: '技术文档 📚',
+        },
+        {to: '/blog', label: '最新博客 📝', position: 'left'},
+        {to: '/docs/categories', label: '分类导航 🗂️', position: 'left'},
+        {
+          type: 'dropdown',
+          label: '技术专题 �',
+          position: 'left',
+          items: [
+            {
+              label: 'Linux运维',
+              to: '/docs/linux',
+            },
+            {
+              label: '容器技术',
+              to: '/docs/container',
+            },
+            {
+              label: '数据库',
+              to: '/docs/database',
+            },
+            {
+              label: '编程开发',
+              to: '/docs/development',
+            },
+          ],
+        },
+        {to: '/blog/tags', label: '标签 🏷️', position: 'right'},
+        {to: '/blog/archive', label: '归档 📂', position: 'right'},
+        {to: '/about', label: '关于我 👨‍💻', position: 'right'},
+        {
+          href: 'https://github.com/linuxergx',
           label: 'GitHub 🐱',
           position: 'right',
         },
@@ -86,25 +119,54 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '内容',
+          title: '技术分类',
           items: [
             {
-              label: '博客',
+              label: '🐧 Linux运维',
+              to: '/docs/linux',
+            },
+            {
+              label: '🚢 容器技术',
+              to: '/docs/container',
+            },
+            {
+              label: '💾 数据库',
+              to: '/docs/database',
+            },
+            {
+              label: '💻 编程开发',
+              to: '/docs/development',
+            },
+          ],
+        },
+        {
+          title: '站点导航',
+          items: [
+            {
+              label: '最新博客',
               to: '/blog',
             },
             {
-              label: '标签',
+              label: '技术文档',
+              to: '/docs/intro',
+            },
+            {
+              label: '标签云',
               to: '/blog/tags',
             },
             {
-              label: '归档',
+              label: '文章归档',
               to: '/blog/archive',
             },
           ],
         },
         {
-          title: '社交媒体',
+          title: '关于我',
           items: [
+            {
+              label: '个人简介',
+              to: '/about',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/linuxergx',
@@ -112,7 +174,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 程少亭的博客 💖`,
+      copyright: `Copyright © ${new Date().getFullYear()} 程少亭的技术博客 💖 | 记录、分享、成长`,
     },
     prism: {
       theme: prismThemes.github,
