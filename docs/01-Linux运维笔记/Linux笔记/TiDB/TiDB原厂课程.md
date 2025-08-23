@@ -263,7 +263,7 @@ TiDB server中owner觉得负责执行DDL 语句
 ##### SQL的Parse(解析)与Complie(编译)
 ![](Pasted%20image%2020230104204216.png)
 
-1. [Parse](LES与语法分析YACC)词法分析LEx与语法分析YACC  转换成AST 抽象语法树
+1. LES与语法分析YACC词法分析LEx与语法分析YACC  转换成AST 抽象语法树
 2. AST被传输到Complie模块
 3. preprocess 预处理阶段 检测SQL合法性
 4. 逻辑优化  逻辑代数等价交换规则 由==外连接转化成内连接==

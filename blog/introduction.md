@@ -37,7 +37,6 @@ authors: [linuxergx]
 
 ### 博客浏览
 - [最新文章](/blog) - 查看最新发布的内容
-- [文章标签](/blog/tags) - 按主题浏览文章
 - [完整归档](/blog/archive) - 浏览所有历史文章
 
 ### 文档中心
@@ -51,7 +50,7 @@ authors: [linuxergx]
 - [高级SQL](/docs/Linux运维笔记/Linux笔记/数据库MySQL/高级SQL) - 数据库进阶技巧
 - [会员训练计划](/docs/运动健身/健身笔记/健身笔记/19%20会员计划制定与强度执行%20+%20高级训练法) - 专业健身指导
 - [康复笔记](/docs/category/exercise-rehab-guide) - 运动康复指南
-- [Ansible知识点整合](/docs/01-Linux运维笔记/Linux笔记/Ansible/Ansible知识点整合) - 自动化运维实践
+- [Ansible知识点整合](/docs/Linux运维笔记/Linux笔记/Ansible/Ansible知识点整合) - 自动化运维实践
 
 ## 📖 持续更新中...
 
