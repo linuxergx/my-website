@@ -12,3 +12,13 @@
   label: 运维
   permalink: /ops
   description: 运维相关文章
+
+软件工程:
+  label: 软件工程
+  permalink: /软件工程
+  description: 软件工程与项目管理
+
+读书:
+  label: 读书
+  permalink: /读书
+  description: 读书笔记

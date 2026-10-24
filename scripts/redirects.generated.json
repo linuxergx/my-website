@@ -18,7 +18,7 @@
     },
     {
       "from": "/docs/01-Linux运维笔记/Linux笔记/Tomcat/Tomcat",
-      "to": "/docs/linux/tomcat/Tomcat"
+      "to": "/docs/linux/tomcat/"
     },
     {
       "from": "/docs/01-Linux运维笔记/Linux笔记/数据库MySQL/高级SQL",
@@ -30,7 +30,7 @@
     },
     {
       "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/01-TiDBday01",
-      "to": "/docs/linux/tidb/01-TiDBday01"
+      "to": "/docs/linux/tidb/TiDBday01"
     },
     {
       "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/TiDBday02",
