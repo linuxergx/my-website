@@ -1,0 +1,9 @@
+{
+  "label": "Docker / K8s",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Docker / K8s",
+    "description": "容器与 Kubernetes 相关笔记。"
+  }
+}

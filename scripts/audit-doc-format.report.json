@@ -1,0 +1,298 @@
+{
+  "count": 48,
+  "byType": {
+    "obsidian-highlight": 4,
+    "empty-table-row": 43,
+    "unclosed-code-fence": 1
+  },
+  "issues": [
+    {
+      "file": "docs/fitness/rehab/01 康复 踝.md",
+      "type": "obsidian-highlight",
+      "detail": "含 ==高亮== 语法，站点不会高亮",
+      "line": null
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| --- | --- | --- | --- |",
+      "line": 12
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| 增肌  |     |     |     |",
+      "line": 13
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| 轻肥  |     |     |     |",
+      "line": 14
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| 肥胖  |     |     |     |",
+      "line": 15
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| 痴肥  |     |     |     |",
+      "line": 16
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "| --- | --- | --- | --- |",
+      "line": 66
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "|---|---|---|---|",
+      "line": 73
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "|---|---|---|---|---|---|",
+      "line": 86
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "|||||||",
+      "line": 88
+    },
+    {
+      "file": "docs/fitness/training/01 训练计划、营养、动作.md",
+      "type": "empty-table-row",
+      "detail": "|---|---|---|---|---|---|",
+      "line": 100
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "| ------ | ----- | ---- | ----- |",
+      "line": 30
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "| ---- | ---- | ---------- | ---- |",
+      "line": 40
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "|      |      | 塑形一个整体俩局部  |      |",
+      "line": 43
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "|      |      | 减脂2个整体一个局部 |      |",
+      "line": 44
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "| :----: | :--: | :--: | :--: |",
+      "line": 48
+    },
+    {
+      "file": "docs/fitness/training/16 胸部调整 涉及分化训练.md",
+      "type": "empty-table-row",
+      "detail": "|        |      |      |      |",
+      "line": 51
+    },
+    {
+      "file": "docs/fitness/training/19 会员计划制定与强度执行 + 高级训练法.md",
+      "type": "empty-table-row",
+      "detail": "|---------|--------|----------|----------|",
+      "line": 31
+    },
+    {
+      "file": "docs/fitness/training/19 会员计划制定与强度执行 + 高级训练法.md",
+      "type": "empty-table-row",
+      "detail": "|------|--------|----------|------|",
+      "line": 47
+    },
+    {
+      "file": "docs/fitness/training/女性碳循环饮食与训练指南.md",
+      "type": "empty-table-row",
+      "detail": "| :----------- | :-------------- | :--------------- | :------- | :--------- | :-",
+      "line": 141
+    },
+    {
+      "file": "docs/linux/ai-infra/ais-bench.md",
+      "type": "obsidian-highlight",
+      "detail": "含 ==高亮== 语法，站点不会高亮",
+      "line": null
+    },
+    {
+      "file": "docs/linux/ai-infra/confusion-matrix.md",
+      "type": "empty-table-row",
+      "detail": "| :----------- | :--------- | :-------------- | :------------------ |",
+      "line": 65
+    },
+    {
+      "file": "docs/linux/ai-infra/confusion-matrix.md",
+      "type": "empty-table-row",
+      "detail": "| --------------- | -------------------------------- | --------------------- | -",
+      "line": 168
+    },
+    {
+      "file": "docs/linux/ai-infra/hami-mineru-k8s.md",
+      "type": "empty-table-row",
+      "detail": "|------|--------|-----|-----|------|-----|",
+      "line": 39
+    },
+    {
+      "file": "docs/linux/ai-infra/hami-mineru-k8s.md",
+      "type": "empty-table-row",
+      "detail": "|------|------|------|------|",
+      "line": 1006
+    },
+    {
+      "file": "docs/linux/ai-infra/linear-interpolation-capacity.md",
+      "type": "empty-table-row",
+      "detail": "| :--- | :--- | :--- | :--- | :--- | :--- |",
+      "line": 37
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| --------------- | ------------------------- | ------------- | ----------------",
+      "line": 698
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| -------------------------- | ------------ | ----------------------------------",
+      "line": 731
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------ | ---------------------- | --------------------------------------",
+      "line": 752
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------------------- | ------------------ | ------------------------ | --",
+      "line": 791
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------ | ---------------------------------- | --------------------------",
+      "line": 801
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------- | ------------------ | -----------------------------------------",
+      "line": 873
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ----------------- | -------------------- | ------------------ | --------------",
+      "line": 991
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| -------------- | -------------------------- | --------------------------------",
+      "line": 1031
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------ | ------------------ | ------------------------------------------",
+      "line": 1045
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| --------------------------- | ------------------------------------------------",
+      "line": 1059
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| -------------- | ---------------------------- | ------------------------------",
+      "line": 1073
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ----------- | ----------------- | --------------------------------------------",
+      "line": 1189
+    },
+    {
+      "file": "docs/linux/ai-infra/llm-acp-notes.md",
+      "type": "empty-table-row",
+      "detail": "| ------------------- | ---------------------------------------- | -------------",
+      "line": 1229
+    },
+    {
+      "file": "docs/linux/aliyun/阿里云.md",
+      "type": "empty-table-row",
+      "detail": "| ----------- | -------- | ----------- | ---------------------- | --------------",
+      "line": 64
+    },
+    {
+      "file": "docs/linux/docker-k8s/k8s-ops-cases.md",
+      "type": "unclosed-code-fence",
+      "detail": "奇数个代码围栏(21)，可能未闭合；起止行约: 40,44,49,52,57,64",
+      "line": 156
+    },
+    {
+      "file": "docs/linux/docker-k8s/k8s-vm-clone-migration.md",
+      "type": "obsidian-highlight",
+      "detail": "含 ==高亮== 语法，站点不会高亮",
+      "line": null
+    },
+    {
+      "file": "docs/linux/mysql/高级SQL.md",
+      "type": "empty-table-row",
+      "detail": "| ----------- | -------- | --------------------- | -----------------------------",
+      "line": 41
+    },
+    {
+      "file": "docs/linux/quiz/interview-linux-k8s.md",
+      "type": "obsidian-highlight",
+      "detail": "含 ==高亮== 语法，站点不会高亮",
+      "line": null
+    },
+    {
+      "file": "docs/linux/server-ops/zabbix-notes.md",
+      "type": "empty-table-row",
+      "detail": "| --- | --- | --- | --- | --- |",
+      "line": 48
+    },
+    {
+      "file": "docs/linux/server-ops/zabbix-notes.md",
+      "type": "empty-table-row",
+      "detail": "| --- | --- | --- | --- |",
+      "line": 200
+    },
+    {
+      "file": "docs/linux/server-ops/zabbix-notes.md",
+      "type": "empty-table-row",
+      "detail": "| --- | --- | --- | --- | --- | --- |",
+      "line": 401
+    },
+    {
+      "file": "docs/linux/tomcat/Tomcat.md",
+      "type": "empty-table-row",
+      "detail": "| ------- | ----------------------- | ------------------------------------------",
+      "line": 36
+    }
+  ]
+}

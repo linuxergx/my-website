@@ -1,0 +1,9 @@
+{
+  "label": "TiDB",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "TiDB",
+    "description": "TiDB 分布式数据库学习笔记。"
+  }
+}

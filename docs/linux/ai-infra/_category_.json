@@ -1,0 +1,9 @@
+{
+  "label": "AI 推理与算力",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "AI 推理与算力",
+    "description": "面向生产的 GPU/LLM 运维：调度切分、压测容量、排障与监控。"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Ansible",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Ansible",
+    "description": "Ansible 自动化运维笔记。"
+  }
+}

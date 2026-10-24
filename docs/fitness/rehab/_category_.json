@@ -1,0 +1,10 @@
+{
+  "label": "运动康复指南",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "各部位运动康复指南",
+    "description": "针对踝、膝、腰、颈、肩等部位的防护与恢复思路。",
+    "slug": "/category/exercise-rehab-guide"
+  }
+}

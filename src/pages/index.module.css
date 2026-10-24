@@ -1,23 +1,187 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
   position: relative;
+  min-height: var(--site-hero-height, 640px);
+  display: flex;
+  align-items: center;
+  padding: 5rem 0 4rem;
   overflow: hidden;
+  color: #f7faf9;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(45, 212, 191, 0.28), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(240, 180, 41, 0.12), transparent 50%),
+    linear-gradient(155deg, #07141a 0%, #0b1c24 42%, #12353f 100%);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247, 250, 249, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 250, 249, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 20%, transparent 75%);
+  pointer-events: none;
+  animation: grid-drift 28s linear infinite;
+}
+
+.heroBanner::after {
+  content: '';
+  position: absolute;
+  width: 42vw;
+  max-width: 520px;
+  height: 42vw;
+  max-height: 520px;
+  right: -6%;
+  bottom: -18%;
+  border-radius: 40% 60% 55% 45%;
+  background: linear-gradient(140deg, rgba(20, 184, 166, 0.35), rgba(15, 118, 110, 0.05));
+  filter: blur(2px);
+  animation: blob-float 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  text-align: left;
+}
+
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5eead4;
+}
+
+.brandDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #f0b429;
+  box-shadow: 0 0 0 4px rgba(240, 180, 41, 0.2);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+.heroTitle {
+  font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+.heroSubtitle {
+  margin: 0 0 2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(247, 250, 249, 0.78);
+  max-width: 34em;
 }
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
   align-items: center;
-  justify-content: center;
+}
+
+.ctaPrimary {
+  background: #2dd4bf !important;
+  color: #0b1c24 !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(45, 212, 191, 0.35);
+  color: #0b1c24 !important;
+}
+
+.ctaGhost {
+  background: transparent !important;
+  color: #f7faf9 !important;
+  border: 1px solid rgba(247, 250, 249, 0.35) !important;
+  font-weight: 500;
+  padding: 0.75rem 1.4rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ctaGhost:hover {
+  border-color: #2dd4bf !important;
+  background: rgba(45, 212, 191, 0.08) !important;
+  color: #f7faf9 !important;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    min-height: auto;
+    padding: 3.5rem 0 3rem;
+  }
+
+  .heroInner {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .brandMark {
+    justify-content: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .heroBanner::after {
+    opacity: 0.55;
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 48px 48px, 48px 48px;
+  }
+}
+
+@keyframes blob-float {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(-18px, -24px) rotate(8deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroBanner::before,
+  .heroBanner::after,
+  .brandDot {
+    animation: none;
+  }
 }

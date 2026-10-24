@@ -1,0 +1,9 @@
+{
+  "label": "MySQL",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "MySQL",
+    "description": "MySQL SQL 进阶与高可用架构。"
+  }
+}

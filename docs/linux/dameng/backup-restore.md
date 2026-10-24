@@ -1,0 +1,190 @@
+---
+format: md
+sidebar_position: 1
+title: 达梦 8 数据库备份与恢复
+---
+
+[TOC]
+
+# DM8 数据库备份
+
+### 1. 备份方式比较
+
+> 达梦数据库目前较好的备份方案有两种，dexp的方案在有多个库需要备份时较为耗时、占资源，且灵活性不高
+>
+> 作业备份方式较为灵活，会自动压缩，最终方案选作业方式备份
+
+####  1.1 dexp/dimp方式逻辑备份与恢复
+
+* 优点： 联机状态即可备份与恢复，可指定单表与单库，操作简单
+* 缺点： 备份时间相对较久，备份时不加限制容易出现OOM（老版本），影响服务稳定，占用空间较大
+
+#### 1.2 作业方式备份与DMconsole恢复
+
+* 优点： 达梦工具自带，支持定时执行，可全备与增量，占用空间小，备份速度快，对系统负载较小
+* 缺点： 操作略复杂，需要有一定的基础，恢复时需要离线操作
+
+
+
+### 2. 备份操作步骤
+
+#### 2.1 开启数据库的日志归档模式
+
+* 2.1.1 开启归档
+
+  * 2.1.1.1 选择需要备份的数据库，右键选择`管理服务器`![1749786250559](images/1749786250559.png)
+
+  * 2.1.1.2 选择系统管理页面，点击配置，然后点转换。（此时数据库为挂起状态，暂时无法访问数据）
+
+    ![1749786343786](images/1749786343786.png)
+
+  * 2.1.1.3 下一步选择归档配置，把归档模式选择到归档，点击右下角的`+`号进行选择归档日志的路径，最后确定即可。<font color=greee>添加归档路径应该与安装数据库用户的权限一致。否则日志无法写入，后期无法备份数据</font>
+
+    ![1749786463458](images/1749786463458.png)
+
+  * 2.1.1.4 此时日志归档已经配置完成，但数据库为挂起状态，需要切换回配置模式。重复2.1.1.2的步骤，将状态切到打开状态然后点击确定数据库恢复访问。
+
+    ![1749786343786](images/1749786343786.png)
+
+#### 2.2 创建自动作业任务
+
+* 创建代理环境
+  
+  * 链接数据库，右击选择创建代理环境即可创建作业所需要的空间
+  
+    ![1749787269424](images/1749787269424.png)
+  
+  *   创建之后就会看到作业、警报与操作员的目录。![1749787594500](images/1749787594500.png)
+
+  * 创建备份作业
+
+      * 右键点击新建作业
+
+    ![1749791762492](images/1749791762492.png)
+
+    * 作业名与描述根据自己需求填写即可
+
+    ![1749791831246](images/1749791831246.png)
+
+    * 选择作业步骤，在右下角点击添加，在步骤类型中选择`备份数据库` ,作业名称与步骤名称自己取名即可。选择本机的备份路径，尽可能在之前的归档日志目录下，不会有权限问题，并行备份数与备份大小根据物理机性能进行权衡，如果是虚拟机尽量越小越好。如果物理机上服务较多，避免出现磁盘I/O过高，可以限制读取与写入速度。
+
+      ![1749791910159](images/1749791910159.png)
+
+    * 设置好作业步骤之后，选择作业调度，然后点击右下角的新加，增添一条作业调度规则，在调度规则中可以按照自己需要的备份规则进行定时。![1749793219328](images/1749793219328.png)
+
+
+
+* ​	测试测试定时规则是否可用
+
+  * 创建好定时规则之后，右键选择立即执行作业
+
+  ![1749793388169](images/1749793388169.png)
+
+  * 点击确定之后，作业开始执行
+
+    ![1749793426490](images/1749793426490.png)*
+
+* 执行作业
+  
+  * 右键选择作业下的`查看作业历史信息`
+
+![1749793487731](images/1749793487731.png)
+
+* 查看作业是否正常
+  * 查看作业历史信息
+  * ![1749793658490](images/1749793658490.png)
+  * 错误信息栏为空则正常，如果报错一般是选择归档目录的时候没有设置目录或者目录权限不对。![1749793688400](images/1749793688400.png)
+
+#### 2.3 备份目录内容
+
+```bash
+DB_DAMENG_FULL_2025_06_12_03_00_17 <-- 全备目录会有一个时间戳
+    ├── DB_DAMENG_FULL_2025_06_12_03_00_17_1.bak   <-- 数据内容
+    ├── DB_DAMENG_FULL_2025_06_12_03_00_17.bak
+    └── DB_DAMENG_FULL_2025_06_12_03_00_17.meta  <-- 元数据信息 记录存储介质序列号、日志序列号、备份时间戳等信息
+
+```
+
+### 3. 还原操作步骤
+
+> 还原时在另一台机器上，也需要开启日志归档模式，为空机器
+
+#### 3.1 关闭服务
+
+```bash
+gaoxu@gaoxu-pc:~/dmdbms/bin$ systemctl stop DmServiceDMSERVER
+=== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+停止“DmServiceDMSERVER.service”需要认证。
+Authenticating as: gaoxu
+输入密码
+=== AUTHENTICATION COMPLETE ===
+
+```
+
+
+
+#### 3.2 将备份的数据迁移到另一台机器上的备份目录下
+
+```bash
+## 另一台机器的备份目录为/home/gaoxu/dmdbms/backup 
+gaoxu@gaoxu-pc:~/dmdbms/backup$ ll
+总用量 132476
+drwxrwxr-x  3 gaoxu lenovo     4096 6月  13 02:51  ./
+drwxr-xr-x 18 gaoxu gaoxu      4096 6月  13 02:37  ../
+-rw-r--r--  1 gaoxu gaoxu  67108864 6月  13 06:03 'ARCHIVE_LOCAL1_0x3ADF8160[0]_2025-06-13_02-51-45.log'
+-rw-r--r--  1 gaoxu lenovo   427008 6月   9 08:52 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_04-48-18.log'
+-rw-r--r--  1 gaoxu lenovo   202752 6月   9 08:52 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_07-28-37.log'
+-rw-r--r--  1 gaoxu lenovo   204288 6月   9 09:52 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_08-52-27.log'
+-rw-r--r--  1 gaoxu lenovo   183296 6月   9 09:52 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_09-27-25.log'
+-rw-r--r--  1 gaoxu lenovo   195072 6月   9 10:04 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_09-52-07.log'
+-rw-r--r--  1 gaoxu lenovo   202240 6月  10 01:12 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-09_10-04-11.log'
+-rw-r--r--  1 gaoxu lenovo 67108864 6月  11 06:55 'ARCHIVE_LOCAL1_0x77034D6A[0]_2025-06-10_01-12-58.log'
+drwxr-xr-x  2 gaoxu lenovo     4096 6月  13 02:50  DB_DAMENG_FULL_2025_06_06_15_38_25/
+gaoxu@gaoxu-pc:~/dmdbms/backup$ pwd
+/home/gaoxu/dmdbms/backup
+
+```
+
+#### 3.3 开启console界面进行恢复
+
+```bash
+# 1. 进入到需要恢复的机器的 dmdbms/tool目录下 执行  ./console命令，之后会拉起一个UI界面
+gaoxu@gaoxu-pc:~/dmdbms/tool$ ./console
+
+```
+
+* 在左边列表中选择备份还原，然后在右侧选择**还原**选项，在备份集目录中选择刚才放进去的数据集，之后点击确定。等待恢复。此处报错可能权限存在问题，二次导入时请选择`还原时覆盖已存在的文件`![1749795314686](images/1749795314686.png)
+* 成功之后选择还原，此步骤相当于MySQL的Redo log，重做与归档日志，还原备份之后所有已提交的事务状态，备份的瞬间可能存在很多事务，数据文件之间会有不一致的情况。
+
+![1749796357640](images/1749796357640.png)
+
+* 更新DB_Magic ，此步骤是异机恢复时需要操作的 ，相当于刷新配置信息。
+  * DB_Magic时数据库的内部唯一标识，它说数据库的配置信息有关，数据库从A到B时，物理环境发生改变，如果直接启动，在校验环境配置时会启动失败。
+
+![1749796397893](images/1749796397893.png)
+
+* 更新完成之后再启动数据库
+
+```bash
+gaoxu@gaoxu-pc:~/dmdbms/bin$ systemctl start DmServiceDMSERVER
+=== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+启动“DmServiceDMSERVER.service”需要认证。
+Authenticating as: gaoxu
+输入密码
+=== AUTHENTICATION COMPLETE ===
+gaoxu@gaoxu-pc:~/dmdbms/bin$ systemctl status  DmServiceDMSERVER
+● DmServiceDMSERVER.service - DM Instance Service
+     Loaded: loaded (/lib/systemd/system/DmServiceDMSERVER.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-06-13 02:51:59 CST; 8s ago
+    Process: 250535 ExecStart=/home/gaoxu/dmdbms/bin/DmServiceDMSERVER start (code=exited, status=0/SUCCESS)
+   Main PID: 250557 (dmserver)
+      Tasks: 67
+     Memory: 444.8M
+     CGroup: /system.slice/DmServiceDMSERVER.service
+             └─250557 /home/gaoxu/dmdbms/bin/dmserver path=/home/gaoxu/dmdbms/data/DAMENG/dm.ini -noconsole
+
+6月 13 02:51:42 gaoxu-pc systemd[1]: Starting DM Instance Service...
+6月 13 02:51:59 gaoxu-pc DmServiceDMSERVER[250535]: [39B blob data]
+6月 13 02:51:59 gaoxu-pc systemd[1]: Started DM Instance Service.
+
+```

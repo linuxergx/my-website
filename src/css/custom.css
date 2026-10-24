@@ -1,32 +1,135 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * 程少亭的博客 — 视觉基调：墨色底 + 青绿强调（运维/算力气质，避开紫系与奶油风）
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
-  --ifm-background-color: #f8fafc;
+  --brand-ink: #0b1c24;
+  --brand-ink-soft: #16303a;
+  --brand-teal: #0f766e;
+  --brand-teal-bright: #14b8a6;
+  --brand-amber: #f0b429;
+  --brand-mist: #eef3f2;
+  --brand-paper: #f7faf9;
+
+  --ifm-font-family-base: 'Noto Sans SC', 'Space Grotesk', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'Space Grotesk', 'SFMono-Regular', Menlo, Consolas, monospace;
+  --ifm-heading-font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+
+  --ifm-color-primary: #0f766e;
+  --ifm-color-primary-dark: #0d6861;
+  --ifm-color-primary-darker: #0c5f59;
+  --ifm-color-primary-darkest: #0a4e49;
+  --ifm-color-primary-light: #14887f;
+  --ifm-color-primary-lighter: #1a9a8f;
+  --ifm-color-primary-lightest: #2ab5a8;
+
+  --ifm-background-color: var(--brand-paper);
+  --ifm-navbar-background-color: rgba(247, 250, 249, 0.88);
+  --ifm-footer-background-color: var(--brand-ink);
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-global-radius: 10px;
+  --docusaurus-highlighted-code-line-bg: rgba(15, 118, 110, 0.12);
+
+  --site-hero-height: min(78vh, 640px);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #60a5fa;
-  --ifm-color-primary-dark: #3b82f6;
-  --ifm-color-primary-darker: #2563eb;
-  --ifm-color-primary-darkest: #1d4ed8;
-  --ifm-color-primary-light: #93c5fd;
-  --ifm-color-primary-lighter: #bfdbfe;
-  --ifm-color-primary-lightest: #dbeafe;
-  --ifm-background-color: #0f172a;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --brand-mist: #12262e;
+  --brand-paper: #0b1c24;
+  --ifm-color-primary: #2dd4bf;
+  --ifm-color-primary-dark: #14b8a6;
+  --ifm-color-primary-darker: #0d9488;
+  --ifm-color-primary-darkest: #0f766e;
+  --ifm-color-primary-light: #5eead4;
+  --ifm-color-primary-lighter: #99f6e4;
+  --ifm-color-primary-lightest: #ccfbf1;
+  --ifm-background-color: #0b1c24;
+  --ifm-navbar-background-color: rgba(11, 28, 36, 0.9);
+  --ifm-footer-background-color: #07141a;
+  --docusaurus-highlighted-code-line-bg: rgba(45, 212, 191, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  letter-spacing: 0.01em;
+}
+
+.navbar {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+  box-shadow: none;
+}
+
+.navbar__title {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+.footer {
+  border-top: 3px solid var(--brand-teal-bright);
+}
+
+.footer__title {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: rgba(15, 118, 110, 0.1);
+  border-right: 3px solid var(--ifm-color-primary);
+}
+
+.theme-doc-markdown {
+  max-width: 52rem;
+}
+
+.button--secondary {
+  border: none;
+}
+
+.pagination-nav__link {
+  border-color: rgba(15, 118, 110, 0.2);
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+/* 文档页轻微氛围底 */
+main .container {
+  position: relative;
+}
+
+article {
+  animation: rise-in 0.45s ease both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  article {
+    animation: none;
+  }
 }

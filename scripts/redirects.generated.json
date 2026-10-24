@@ -1,0 +1,232 @@
+{
+  "redirects": [
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/Ansible/Ansible知识点整合",
+      "to": "/docs/linux/ansible/Ansible知识点整合"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/Nginx/Nginx 进阶学习笔记",
+      "to": "/docs/linux/nginx/Nginx 进阶学习笔记"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/shell、正则、脚本/Linux脚本",
+      "to": "/docs/linux/shell/Linux脚本"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/容器 k8s、docker/Docker笔记",
+      "to": "/docs/linux/docker-k8s/Docker笔记"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/Tomcat/Tomcat",
+      "to": "/docs/linux/tomcat/Tomcat"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/数据库MySQL/高级SQL",
+      "to": "/docs/linux/mysql/高级SQL"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/MySQL数据库/MySQL高可用架构实战手册",
+      "to": "/docs/linux/mysql/MySQL高可用架构实战手册"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/01-TiDBday01",
+      "to": "/docs/linux/tidb/01-TiDBday01"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/TiDBday02",
+      "to": "/docs/linux/tidb/TiDBday02"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/TiDB原厂课程",
+      "to": "/docs/linux/tidb/TiDB原厂课程"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/TiDB/深入浅出分析LSM树（日志结构合并树）",
+      "to": "/docs/linux/tidb/深入浅出分析LSM树（日志结构合并树）"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/服务器运维/运维手册",
+      "to": "/docs/linux/server-ops/运维手册"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/运维网络知识/网络知识点集合",
+      "to": "/docs/linux/networking/网络知识点集合"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/阿里云/阿里云",
+      "to": "/docs/linux/aliyun/阿里云"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/Linux答疑/linux系统常见知识点答疑",
+      "to": "/docs/linux/faq/linux系统常见知识点答疑"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/Linux笔记/随堂测验(Linux)/随堂测试与面试题",
+      "to": "/docs/linux/quiz/随堂测试与面试题"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/计算机英文词汇/计算机专业英语词汇手册",
+      "to": "/docs/linux/english-vocab/计算机专业英语词汇手册"
+    },
+    {
+      "from": "/docs/01-Linux运维笔记/计算机英文词汇/附录-互联网行业技术术语1400词",
+      "to": "/docs/linux/english-vocab/附录-互联网行业技术术语1400词"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/01 训练计划、营养、动作",
+      "to": "/docs/fitness/training/01 训练计划、营养、动作"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/02 全身训练",
+      "to": "/docs/fitness/training/02 全身训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/03 胸部训练",
+      "to": "/docs/fitness/training/03 胸部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/04 05 背部",
+      "to": "/docs/fitness/training/04 05 背部"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/06 肩部训练",
+      "to": "/docs/fitness/training/06 肩部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/07 腿 下肢增强训练",
+      "to": "/docs/fitness/training/07 腿 下肢增强训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/08 腿 自由杠",
+      "to": "/docs/fitness/training/08 腿 自由杠"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/09 二头三头训练",
+      "to": "/docs/fitness/training/09 二头三头训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/10 第二轮胸部训练",
+      "to": "/docs/fitness/training/10 第二轮胸部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/11 背部训练",
+      "to": "/docs/fitness/training/11 背部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/12 肩部训练",
+      "to": "/docs/fitness/training/12 肩部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/13 下肢增强 后侧连拉类训练",
+      "to": "/docs/fitness/training/13 下肢增强 后侧连拉类训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/14 臀",
+      "to": "/docs/fitness/training/14 臀"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/15 第二轮手臂",
+      "to": "/docs/fitness/training/15 第二轮手臂"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/16 胸部调整 涉及分化训练",
+      "to": "/docs/fitness/training/16 胸部调整 涉及分化训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/17 肩 分化训练",
+      "to": "/docs/fitness/training/17 肩 分化训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/18 下肢整合 腿",
+      "to": "/docs/fitness/training/18 下肢整合 腿"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/19 会员计划制定与强度执行 + 高级训练法",
+      "to": "/docs/fitness/training/19 会员计划制定与强度执行 + 高级训练法"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/20 背部训练",
+      "to": "/docs/fitness/training/20 背部训练"
+    },
+    {
+      "from": "/docs/02-运动健身/01-健身笔记/健身笔记/女性碳循环饮食与训练指南",
+      "to": "/docs/fitness/training/女性碳循环饮食与训练指南"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/01 康复 踝",
+      "to": "/docs/fitness/rehab/01 康复 踝"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/02 康复 膝",
+      "to": "/docs/fitness/rehab/02 康复 膝"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/03 康复 腰",
+      "to": "/docs/fitness/rehab/03 康复 腰"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/04 康复 颈",
+      "to": "/docs/fitness/rehab/04 康复 颈"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/05 康复 肩",
+      "to": "/docs/fitness/rehab/05 康复 肩"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/运动康复笔记01",
+      "to": "/docs/fitness/rehab/运动康复笔记01"
+    },
+    {
+      "from": "/docs/02-运动健身/02-康复笔记/康复笔记/运动康复笔记02",
+      "to": "/docs/fitness/rehab/运动康复笔记02"
+    }
+  ],
+  "extraFromWelcome": [
+    {
+      "from": "/docs/Linux运维笔记/MySQL数据库/MySQL高可用架构实战手册",
+      "to": "/docs/linux/mysql/MySQL高可用架构实战手册"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/容器 k8s、docker/Docker笔记",
+      "to": "/docs/linux/docker-k8s/Docker笔记"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/Nginx/Nginx 进阶学习笔记",
+      "to": "/docs/linux/nginx/Nginx 进阶学习笔记"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/Linux答疑/linux系统常见知识点答疑",
+      "to": "/docs/linux/faq/linux系统常见知识点答疑"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/服务器运维/运维手册",
+      "to": "/docs/linux/server-ops/运维手册"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/数据库MySQL/高级SQL",
+      "to": "/docs/linux/mysql/高级SQL"
+    },
+    {
+      "from": "/docs/Linux运维笔记/Linux笔记/Ansible/Ansible知识点整合",
+      "to": "/docs/linux/ansible/Ansible知识点整合"
+    },
+    {
+      "from": "/docs/运动健身/健身笔记/健身笔记/19 会员计划制定与强度执行 + 高级训练法",
+      "to": "/docs/fitness/training/19 会员计划制定与强度执行 + 高级训练法"
+    }
+  ],
+  "staticExtras": [
+    {
+      "from": "D:\\my-websit\\my-website\\docs\\01-Linux运维笔记\\Linux笔记\\TiDB\\TiDB原厂课程.docx",
+      "to": "/files/TiDB原厂课程.docx"
+    },
+    {
+      "from": "D:\\my-websit\\my-website\\docs\\01-Linux运维笔记\\Linux笔记\\TiDB\\TiDB原厂课程.html",
+      "to": "/files/TiDB原厂课程.html"
+    },
+    {
+      "from": "D:\\my-websit\\my-website\\docs\\02-运动健身\\02-康复笔记\\康复笔记\\康复课程知识梳理.docx",
+      "to": "/files/康复课程知识梳理.docx"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Nginx",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Nginx",
+    "description": "Nginx 进阶配置与实践。"
+  }
+}

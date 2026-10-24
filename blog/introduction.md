@@ -44,13 +44,13 @@ authors: [linuxergx]
 - [健康运动](/docs/category/fitness-rehab-summary) - 健身训练与康复知识
 
 ### 推荐阅读
-- [Linux常见知识点答疑](/docs/Linux运维笔记/Linux笔记/Linux答疑/linux系统常见知识点答疑) - 系统运维常见问题解答
-- [运维手册](/docs/Linux运维笔记/Linux笔记/服务器运维/运维手册) - 服务器运维实践指南
-- [Docker笔记](/docs/Linux运维笔记/Linux笔记/容器%20k8s、docker/Docker笔记) - 容器技术实战
-- [高级SQL](/docs/Linux运维笔记/Linux笔记/数据库MySQL/高级SQL) - 数据库进阶技巧
-- [会员训练计划](/docs/运动健身/健身笔记/健身笔记/19%20会员计划制定与强度执行%20+%20高级训练法) - 专业健身指导
+- [Linux常见知识点答疑](/docs/linux/faq/linux系统常见知识点答疑) - 系统运维常见问题解答
+- [运维手册](/docs/linux/server-ops/运维手册) - 服务器运维实践指南
+- [Docker笔记](/docs/linux/docker-k8s/Docker笔记) - 容器技术实战
+- [高级SQL](/docs/linux/mysql/高级SQL) - 数据库进阶技巧
+- [会员训练计划](/docs/fitness/training/19%20会员计划制定与强度执行%20+%20高级训练法) - 专业健身指导
 - [康复笔记](/docs/category/exercise-rehab-guide) - 运动康复指南
-- [Ansible知识点整合](/docs/Linux运维笔记/Linux笔记/Ansible/Ansible知识点整合) - 自动化运维实践
+- [Ansible知识点整合](/docs/linux/ansible/Ansible知识点整合) - 自动化运维实践
 
 ## 📖 持续更新中...
 

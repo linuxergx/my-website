@@ -1,0 +1,9 @@
+{
+  "label": "服务器运维",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "服务器运维",
+    "description": "Linux 服务器日常运维与排障手册。"
+  }
+}
