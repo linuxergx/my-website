@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-linux/mysql/MySQL高可用架构实战手册" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">MySQL高可用架构实战手册 | 程少亭的博客</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://linuxergx.github.io/my-website/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://linuxergx.github.io/my-website/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL高可用架构实战手册"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="MySQL高可用架构实战手册 | 程少亭的博客"><meta data-rh="true" name="description" content="目录"><meta data-rh="true" property="og:description" content="目录"><link data-rh="true" rel="icon" href="/my-website/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL高可用架构实战手册"><link data-rh="true" rel="alternate" href="https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL高可用架构实战手册" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL高可用架构实战手册" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"💻 技术笔记","item":"https://linuxergx.github.io/my-website/docs/category/linux-ops-summary"},{"@type":"ListItem","position":2,"name":"数据存储","item":"https://linuxergx.github.io/my-website/docs/category/data-stores"},{"@type":"ListItem","position":3,"name":"MySQL高可用架构实战手册","item":"https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL高可用架构实战手册"}]}</script><link rel="alternate" type="application/rss+xml" href="/my-website/blog/rss.xml" title="程少亭的博客 RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/my-website/blog/atom.xml" title="程少亭的博客 Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="/my-website/assets/css/styles.25456979.css">
+<script src="/my-website/assets/js/runtime~main.345242b9.js" defer="defer"></script>
+<script src="/my-website/assets/js/main.817f86ac.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/my-website/img/logo.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my-website/"><div class="navbar__logo"><img src="/my-website/img/logo.svg" alt="程少亭的博客 Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my-website/img/logo.svg" alt="程少亭的博客 Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">程少亭的博客</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my-website/docs/category/linux-ops-summary">技术笔记</a><a class="navbar__item navbar__link" href="/my-website/docs/category/fitness-rehab-summary">健康运动</a><a class="navbar__item navbar__link" href="/my-website/docs/category/culture-notes">人文笔记</a><a class="navbar__item navbar__link" href="/my-website/blog">随笔</a><a href="/my-website/cka-exam/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">CKA 模拟<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/linuxergx/my-website" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/my-website/docs/category/linux-ops-summary">💻 技术笔记</a><button aria-label="折叠侧边栏分类 &#x27;💻 技术笔记&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/platform-ops">平台运维</a><button aria-label="折叠侧边栏分类 &#x27;平台运维&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/server-ops/hyper-v-gpu-pv-and-nat">Hyper-V：GPU-PV 与固定 NAT 网络实战</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/server-ops/zabbix-notes">Zabbix 笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/server-ops/运维手册">Linux系统运维权威手册</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/networking/网络知识点集合">运维网络与防火墙核心知识点 (图解版)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/shell/Linux脚本">**第一部分：Linux Shell 脚本编程基础**</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/ansible/Ansible知识点整合">Ansible 学习笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/nginx/Nginx 进阶学习笔记">Nginx 进阶学习笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tomcat/">Tomcat 运维实战笔记 (图解详尽版)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/aliyun/阿里云">服务器与网站搭建学习手册</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/cloud-native">云原生</a><button aria-label="展开侧边栏分类 &#x27;云原生&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/my-website/docs/category/data-stores">数据存储</a><button aria-label="折叠侧边栏分类 &#x27;数据存储&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my-website/docs/linux/mysql/MySQL高可用架构实战手册">MySQL高可用架构实战手册</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/mysql/高级SQL">MySQL 高级 SQL 与数据库管理</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tidb/TiDBday01">TiDBday01</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tidb/TiDBday02">TiDBday02</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tidb/TiDB原厂课程">TiDB原厂课程</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tidb/深入浅出分析LSM树（日志结构合并树）">深入浅出分析LSM树（日志结构合并树）</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/dameng/backup-restore">达梦 8 数据库备份与恢复</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/ai-compute">AI 与算力</a><button aria-label="展开侧边栏分类 &#x27;AI 与算力&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/exam-tools">备考与工具</a><button aria-label="展开侧边栏分类 &#x27;备考与工具&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/my-website/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/my-website/docs/category/linux-ops-summary"><span>💻 技术笔记</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/my-website/docs/category/data-stores"><span>数据存储</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">MySQL高可用架构实战手册</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>MySQL高可用架构实战手册</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="目录">目录<a href="#目录" class="hash-link" aria-label="目录的直接链接" title="目录的直接链接">​</a></h2>
+<p>[toc]</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第一部分mysql基础核心">第一部分：MySQL基础核心<a href="#第一部分mysql基础核心" class="hash-link" aria-label="第一部分：MySQL基础核心的直接链接" title="第一部分：MySQL基础核心的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第一章mysql入门与安装">第一章：MySQL入门与安装<a href="#第一章mysql入门与安装" class="hash-link" aria-label="第一章：MySQL入门与安装的直接链接" title="第一章：MySQL入门与安装的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11-数据库核心概念与体系结构">1.1 数据库核心概念与体系结构<a href="#11-数据库核心概念与体系结构" class="hash-link" aria-label="1.1 数据库核心概念与体系结构的直接链接" title="1.1 数据库核心概念与体系结构的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>RDBMS (关系型数据库管理系统)</strong>: 基于关系模型来管理数据的数据库，如 Oracle, <strong>MySQL</strong>, PostgreSQL。</p>
+</li>
+<li>
+<p><strong>NoSQL (非关系型数据库)</strong>: 通常用于处理大规模和高并发的数据场景，如 MongoDB, Redis, Elasticsearch。</p>
+</li>
+<li>
+<p><strong>MySQL体系结构</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |               客户端 (Client)           |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |        (mysql, navicat, API等)          |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                     | (网络连接)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |              MySQL 服务 (Server)        |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |-----------------------------------------|</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |    连接层 (Connection Pool, Auth)       |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |-----------------------------------------|</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |      SQL层 (Parser, Optimizer, Cache)   |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |-----------------------------------------|</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |  存储引擎层 (Pluggable Storage Engines) |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |   (InnoDB, MyISAM, Memory, TokuDB...)   |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                     | (磁盘交互)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    |            物理文件 (Data Files)        |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    +-----------------------------------------+</span><br></span></code></pre></div></div>
+<ul>
+<li><strong>连接层</strong>: 处理客户端连接请求，进行身份验证和权限检查。</li>
+<li><strong>SQL层</strong>: 对SQL语句进行解析、优化，并生成执行计划。查询缓存（Query Cache，8.0版本已移除）也在此层。</li>
+<li><strong>存储引擎层</strong>: 负责数据的实际存储和提取。MySQL支持插件式存储引擎，是事务、索引等特性的具体实现者。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12-mysql版本选择">1.2 MySQL版本选择<a href="#12-mysql版本选择" class="hash-link" aria-label="1.2 MySQL版本选择的直接链接" title="1.2 MySQL版本选择的直接链接">​</a></h3>
+<ul>
+<li><strong>主流厂商</strong>: Oracle MySQL, Percona Server, MariaDB。</li>
+<li><strong>企业版本建议</strong>:
+<ul>
+<li><strong>5.7</strong>: <strong>目前最主流</strong>，性能和功能有显著提升。建议使用<code>5.7.20+</code>的双数版本。</li>
+<li><strong>8.0</strong>: 最新大版本，引入了窗口函数、CTE等新特性，并对性能做了进一步优化。建议使用<code>8.0.11+</code>的版本。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13-二进制包安装mysql-57">1.3 二进制包安装MySQL 5.7<a href="#13-二进制包安装mysql-57" class="hash-link" aria-label="1.3 二进制包安装MySQL 5.7的直接链接" title="1.3 二进制包安装MySQL 5.7的直接链接">​</a></h3>
+<p>二进制包安装方式灵活，便于多实例部署和版本控制。</p>
+<p><strong>1. 环境准备</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 创建相关目录</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">mkdir -p /data/app /data/3306/data /data/3306/binlog</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 创建专用的mysql用户</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">useradd -s /sbin/nologin mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 清理系统可能残留的mariadb包</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">yum remove mariadb-libs -y</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 安装依赖</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">yum install -y libaio-devel numactl-libs</span><br></span></code></pre></div></div>
+<p><strong>2. 软件安装与配置</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 解压并创建软链接</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd /data/app</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tar xf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ln -s mysql-5.7.28-linux-glibc2.12-x86_64 mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chown -R mysql.mysql /data/ /data/app/mysql*</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 设置环境变量</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo &#x27;export PATH=/data/app/mysql/bin:$PATH&#x27; &gt;&gt; /etc/profile</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">source /etc/profile</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 创建配置文件 /etc/my.cnf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cat &gt; /etc/my.cnf &lt;&lt;EOF</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[mysqld]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">user=mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">basedir=/data/app/mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">datadir=/data/3306/data</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">socket=/tmp/mysql.sock</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">port=3306</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">server_id=6</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[mysql]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">socket=/tmp/mysql.sock</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">EOF</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 初始化数据库 (datadir目录必须为空)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">mysqld --initialize-insecure --user=mysql --basedir=/data/app/mysql --datadir=/data/3306/data</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="14-mysql启动连接与多实例配置">1.4 MySQL启动、连接与多实例配置<a href="#14-mysql启动连接与多实例配置" class="hash-link" aria-label="1.4 MySQL启动、连接与多实例配置的直接链接" title="1.4 MySQL启动、连接与多实例配置的直接链接">​</a></h3>
+<p><strong>1. 启动服务 (systemd方式，推荐)</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 创建service文件 /etc/systemd/system/mysqld.service</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Unit]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Description=MySQL Server</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">After=network.target</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Service]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User=mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Group=mysql</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ExecStart=/data/app/mysql/bin/mysqld --defaults-file=/etc/my.cnf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">LimitNOFILE=65535</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Install]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">WantedBy=multi-user.target</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 启动并设置开机自启</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">systemctl daemon-reload</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">systemctl start mysqld.service</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">systemctl enable mysqld.service</span><br></span></code></pre></div></div>
+<p><strong>2. 多实例配置</strong> 核心思想是为每个实例提供独立的配置文件、数据目录、端口和socket文件。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 1. 创建新实例目录</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">mkdir -p /data/3307/data</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 2. 创建新配置文件 /data/3307/my.cnf，修改port, server_id, datadir, socket等</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 3. 初始化新实例</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">mysqld --initialize-insecure --user=mysql --datadir=/data/3307/data</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 4. 创建新的systemd启动脚本，如mysqld3307.service，并修改ExecStart指向新的配置文件</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 5. 启动新实例</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">systemctl start mysqld3307.service</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第二章sql语言深度应用">第二章：SQL语言深度应用<a href="#第二章sql语言深度应用" class="hash-link" aria-label="第二章：SQL语言深度应用的直接链接" title="第二章：SQL语言深度应用的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="21-sql语言分类与ddl操作">2.1 SQL语言分类与DDL操作<a href="#21-sql语言分类与ddl操作" class="hash-link" aria-label="2.1 SQL语言分类与DDL操作的直接链接" title="2.1 SQL语言分类与DDL操作的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>SQL分类</strong>:</p>
+<ul>
+<li><strong>DDL (数据定义语言)</strong>: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code></li>
+<li><strong>DML (数据操作语言)</strong>: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></li>
+<li><strong>DCL (数据控制语言)</strong>: <code>GRANT</code>, <code>REVOKE</code></li>
+<li><strong>DQL (数据查询语言)</strong>: <code>SELECT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>DDL操作 (表)</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 创建表</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE `student` (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  `sno` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  `sname` VARCHAR(20) NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  `sage` TINYINT UNSIGNED NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  `ssex` ENUM(&#x27;f&#x27;,&#x27;m&#x27;) NOT NULL DEFAULT &#x27;m&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">) ENGINE=InnoDB CHARSET=utf8mb4;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 修改表结构 (Online DDL)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE student ADD telnum CHAR(11) NOT NULL UNIQUE KEY;</span><br></span></code></pre></div></div>
+<p><strong>注意</strong>: 在生产环境中，对大表的DDL操作应使用<code>pt-online-schema-change</code>或<code>gh-ost</code>等工具，避免锁表。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="22-dml操作与数据安全">2.2 DML操作与数据安全<a href="#22-dml操作与数据安全" class="hash-link" aria-label="2.2 DML操作与数据安全的直接链接" title="2.2 DML操作与数据安全的直接链接">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 插入数据</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">INSERT INTO student(sname, sage, ssex) VALUES(&#x27;张三&#x27;, 18, &#x27;m&#x27;);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 更新数据 (必须带WHERE条件)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">UPDATE student SET sage=21 WHERE sno=1;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 删除数据 (必须带WHERE条件)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DELETE FROM student WHERE sno=2;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 逻辑删除：通过状态字段标记数据为“已删除”，而非物理删除</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE student ADD state TINYINT NOT NULL DEFAULT 1;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">UPDATE student SET state=0 WHERE sno=2;</span><br></span></code></pre></div></div>
+<p><strong>对比 <code>DELETE</code>, <code>TRUNCATE</code>, <code>DROP</code></strong>:</p>
+<ul>
+<li><code>DELETE</code>: DML，逐行删除，可回滚，产生大量binlog。</li>
+<li><code>TRUNCATE</code>: DDL，删除所有数据页，不可回滚，binlog记录少。</li>
+<li><code>DROP</code>: DDL，删除表结构和数据，不可回滚。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="23-dql查询语言核心语法">2.3 DQL查询语言核心语法<a href="#23-dql查询语言核心语法" class="hash-link" aria-label="2.3 DQL查询语言核心语法的直接链接" title="2.3 DQL查询语言核心语法的直接链接">​</a></h3>
+<p><code>SELECT</code>语句的逻辑执行顺序为：<code>FROM</code> -&gt; <code>WHERE</code> -&gt; <code>GROUP BY</code> -&gt; <code>HAVING</code> -&gt; <code>SELECT</code> -&gt; <code>ORDER BY</code> -&gt; <code>LIMIT</code>。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 统计中国城市数量大于10个的省份，并按数量降序排列</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SELECT District, COUNT(Name) AS city_count</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">FROM city</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">WHERE CountryCode = &#x27;CHN&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">GROUP BY District</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">HAVING city_count &gt; 10</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ORDER BY city_count DESC;</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="24-多表连接查询">2.4 多表连接查询<a href="#24-多表连接查询" class="hash-link" aria-label="2.4 多表连接查询的直接链接" title="2.4 多表连接查询的直接链接">​</a></h3>
+<ul>
+<li><strong>内连接 (INNER JOIN)</strong>: 返回两个表中能匹配的行。</li>
+<li><strong>外连接 (LEFT/RIGHT JOIN)</strong>: 返回一个表的全部行和另一个表的匹配行。</li>
+</ul>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 查询&#x27;zhang3&#x27;同学选修的所有课程名称</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SELECT s.sname, c.cname</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">FROM student s</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">JOIN sc ON s.sno = sc.sno</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">JOIN course c ON sc.cno = c.cno</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">WHERE s.sname = &#x27;zhang3&#x27;;</span><br></span></code></pre></div></div>
+<p><strong>优化建议</strong>: 多表连接时，应将结果集较小的表作为<strong>驱动表</strong>。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第三章innodb存储引擎与事务">第三章：InnoDB存储引擎与事务<a href="#第三章innodb存储引擎与事务" class="hash-link" aria-label="第三章：InnoDB存储引擎与事务的直接链接" title="第三章：InnoDB存储引擎与事务的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="31-存储引擎概述-innodb-vs-myisam">3.1 存储引擎概述 (InnoDB vs MyISAM)<a href="#31-存储引擎概述-innodb-vs-myisam" class="hash-link" aria-label="3.1 存储引擎概述 (InnoDB vs MyISAM)的直接链接" title="3.1 存储引擎概述 (InnoDB vs MyISAM)的直接链接">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>特性</th><th>InnoDB</th><th>MyISAM</th></tr></thead><tbody><tr><td><strong>事务</strong></td><td><strong>支持</strong> (ACID)</td><td>不支持</td></tr><tr><td><strong>锁级别</strong></td><td><strong>行级锁</strong></td><td>表级锁</td></tr><tr><td><strong>外键</strong></td><td><strong>支持</strong></td><td>不支持</td></tr><tr><td><strong>MVCC</strong></td><td><strong>支持</strong></td><td>不支持</td></tr><tr><td><strong>崩溃恢复</strong></td><td><strong>支持</strong></td><td>不支持</td></tr></tbody></table>
+<p>自MySQL 5.5起，<strong>InnoDB</strong>成为默认存储引擎，是绝大多数场景的首选。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-innodb核心特性与体系结构">3.2 InnoDB核心特性与体系结构<a href="#32-innodb核心特性与体系结构" class="hash-link" aria-label="3.2 InnoDB核心特性与体系结构的直接链接" title="3.2 InnoDB核心特性与体系结构的直接链接">​</a></h3>
+<ul>
+<li><strong>核心特性</strong>: 事务、行级锁、MVCC、聚簇索引、双写缓冲、自适应哈希索引、更改缓冲。</li>
+<li><strong>体系结构</strong>:
+<ul>
+<li><strong>内存结构</strong>: 缓冲池 (Buffer Pool)、重做日志缓冲 (Redo Log Buffer)。</li>
+<li><strong>磁盘结构</strong>: 表空间 (Tablespace)、重做日志 (Redo Log)、撤销日志 (Undo Log)。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="33-事务acid特性详解">3.3 事务ACID特性详解<a href="#33-事务acid特性详解" class="hash-link" aria-label="3.3 事务ACID特性详解的直接链接" title="3.3 事务ACID特性详解的直接链接">​</a></h3>
+<ul>
+<li><strong>原子性 (Atomicity)</strong>: 事务是一个不可分割的工作单元，要么全部执行，要么全部不执行。由<strong>Undo Log</strong>保证。</li>
+<li><strong>一致性 (Consistency)</strong>: 事务执行前后，数据库从一个一致性状态转移到另一个一致性状态。是事务的最终目的。</li>
+<li><strong>隔离性 (Isolation)</strong>: 一个事务的执行不能被其他事务干扰。由<strong>锁</strong>和<strong>MVCC</strong>保证。</li>
+<li><strong>持久性 (Durability)</strong>: 一旦事务提交，其结果就是永久性的。由<strong>Redo Log</strong>保证。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="34-事务隔离级别与锁机制">3.4 事务隔离级别与锁机制<a href="#34-事务隔离级别与锁机制" class="hash-link" aria-label="3.4 事务隔离级别与锁机制的直接链接" title="3.4 事务隔离级别与锁机制的直接链接">​</a></h3>
+<ul>
+<li><strong>隔离级别</strong>:
+<ul>
+<li><strong>读未提交 (READ UNCOMMITTED)</strong>: 脏读。</li>
+<li><strong>读已提交 (READ COMMITTED)</strong>: 不可重复读。</li>
+<li><strong>可重复读 (REPEATABLE READ)</strong>: <strong>MySQL默认级别</strong>。理论上存在幻读（InnoDB通过MVCC和Next-Key Lock解决）。</li>
+<li><strong>可串行化 (SERIALIZABLE)</strong>: 最高级别，性能最低。</li>
+</ul>
+</li>
+<li><strong>锁</strong>:
+<ul>
+<li><strong>共享锁 (S锁)</strong>: 读锁，多个事务可同时持有。</li>
+<li><strong>排他锁 (X锁)</strong>: 写锁，一次只能有一个事务持有。</li>
+<li><strong>记录锁、间隙锁、Next-Key锁</strong>: InnoDB用于实现行级锁和防止幻读的具体锁类型。</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第四章索引与查询优化">第四章：索引与查询优化<a href="#第四章索引与查询优化" class="hash-link" aria-label="第四章：索引与查询优化的直接链接" title="第四章：索引与查询优化的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="41-索引基础与b-tree结构">4.1 索引基础与B-Tree结构<a href="#41-索引基础与b-tree结构" class="hash-link" aria-label="4.1 索引基础与B-Tree结构的直接链接" title="4.1 索引基础与B-Tree结构的直接链接">​</a></h3>
+<ul>
+<li><strong>什么是索引？</strong>: 索引是帮助MySQL高效获取数据的<strong>排好序的数据结构</strong>。</li>
+<li><strong>B-Tree结构</strong>: InnoDB使用B+Tree，非叶子节点只存储键值，叶子节点存储数据（聚簇索引）或主键（辅助索引），且叶子节点之间通过双向链表连接，便于范围查询。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="42-聚簇索引与辅助索引回表">4.2 聚簇索引与辅助索引（回表）<a href="#42-聚簇索引与辅助索引回表" class="hash-link" aria-label="4.2 聚簇索引与辅助索引（回表）的直接链接" title="4.2 聚簇索引与辅助索引（回表）的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>聚簇索引</strong>: 数据行本身按照主键的顺序进行物理存储，<strong>数据即索引，索引即数据</strong>。每张InnoDB表有且仅有一个。</p>
+</li>
+<li>
+<p><strong>辅助索引</strong>: 叶子节点存储的是<strong>索引键的值</strong>和对应行的<strong>主键值</strong>。</p>
+</li>
+<li>
+<p><strong>回表</strong>: 通过辅助索引查询时，先找到主键值，再用主键值去聚簇索引中查找完整数据行的过程。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 辅助索引查找示意图</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">(name=&#x27;Alice&#x27;)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[辅助索引树: 查找&#x27;Alice&#x27;]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[叶子节点: 得到主键ID=10]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      | (回表)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[聚簇索引树: 查找ID=10]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[叶子节点: 得到&#x27;Alice&#x27;的完整数据行]</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>覆盖索引</strong>: 如果查询所需的所有列都包含在辅助索引中，则无需回表，性能会大幅提升。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="43-索引设计原则与管理">4.3 索引设计原则与管理<a href="#43-索引设计原则与管理" class="hash-link" aria-label="4.3 索引设计原则与管理的直接链接" title="4.3 索引设计原则与管理的直接链接">​</a></h3>
+<ul>
+<li><strong>选择性高</strong>的列适合做索引。</li>
+<li><strong>联合索引</strong>遵循<strong>最左前缀原则</strong>。<code>idx(a,b,c)</code>相当于拥有<code>idx(a)</code>, <code>idx(a,b)</code>, <code>idx(a,b,c)</code>三个索引。</li>
+<li>避免创建过多索引，会影响写入性能并占用磁盘空间。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="44-执行计划分析-explain">4.4 执行计划分析 (EXPLAIN)<a href="#44-执行计划分析-explain" class="hash-link" aria-label="4.4 执行计划分析 (EXPLAIN)的直接链接" title="4.4 执行计划分析 (EXPLAIN)的直接链接">​</a></h3>
+<p><code>EXPLAIN</code>是SQL优化的关键工具。</p>
+<ul>
+<li><strong>关键字段解读</strong>:
+<ul>
+<li><strong>type</strong>: 连接类型，性能从高到低：<code>system</code> &gt; <code>const</code> &gt; <code>eq_ref</code> &gt; <code>ref</code> &gt; <code>range</code> &gt; <code>index</code> &gt; <code>ALL</code>。应尽量避免<code>ALL</code>（全表扫描）。</li>
+<li><strong>key</strong>: 实际使用的索引。</li>
+<li><strong>rows</strong>: 预估需要扫描的行数。</li>
+<li><strong>Extra</strong>: 额外信息，如 <code>Using filesort</code> (需要额外排序), <code>Using temporary</code> (使用了临时表), <code>Using index</code> (使用了覆盖索引)。</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第二部分mysql高级运维">第二部分：MySQL高级运维<a href="#第二部分mysql高级运维" class="hash-link" aria-label="第二部分：MySQL高级运维的直接链接" title="第二部分：MySQL高级运维的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第五章mysql日志系统详解">第五章：MySQL日志系统详解<a href="#第五章mysql日志系统详解" class="hash-link" aria-label="第五章：MySQL日志系统详解的直接链接" title="第五章：MySQL日志系统详解的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="51-错误日志-error-log">5.1 错误日志 (Error Log)<a href="#51-错误日志-error-log" class="hash-link" aria-label="5.1 错误日志 (Error Log)的直接链接" title="5.1 错误日志 (Error Log)的直接链接">​</a></h3>
+<ul>
+<li><strong>作用</strong>: 记录MySQL启动、运行和关闭过程中的严重错误和警告，是问题排查的首要入口。</li>
+<li><strong>配置</strong>: <code>log_error=/path/to/mysql.log</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="52-二进制日志-binary-log">5.2 二进制日志 (Binary Log)<a href="#52-二进制日志-binary-log" class="hash-link" aria-label="5.2 二进制日志 (Binary Log)的直接链接" title="5.2 二进制日志 (Binary Log)的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>作用</strong>: 记录所有对数据库进行更改的操作，是数据恢复和主从复制的基础。</p>
+</li>
+<li>
+<p><strong>核心配置</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[mysqld]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">server_id=6</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">log_bin=/data/3306/binlog/mysql-bin</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">binlog_format=ROW</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sync_binlog=1</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>Binlog格式</strong>: 生产环境推荐使用 <strong>ROW</strong> 格式以保证数据一致性。</p>
+</li>
+<li>
+<p><strong>恢复操作</strong>: 可使用<code>mysqlbinlog</code>工具基于Position点或GTID进行数据恢复。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="53-慢查询日志-slow-query-log">5.3 慢查询日志 (Slow Query Log)<a href="#53-慢查询日志-slow-query-log" class="hash-link" aria-label="5.3 慢查询日志 (Slow Query Log)的直接链接" title="5.3 慢查询日志 (Slow Query Log)的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>作用</strong>: 记录执行时间超过指定阈值的SQL语句，是SQL优化的重要依据。</p>
+</li>
+<li>
+<p><strong>核心配置</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[mysqld]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">slow_query_log=ON</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">long_query_time=0.1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">log_queries_not_using_indexes</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>分析工具</strong>: 强烈推荐使用Percona Toolkit中的<code>pt-query-digest</code>。</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第六章备份与恢复策略">第六章：备份与恢复策略<a href="#第六章备份与恢复策略" class="hash-link" aria-label="第六章：备份与恢复策略的直接链接" title="第六章：备份与恢复策略的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="61-备份策略与dba职责">6.1 备份策略与DBA职责<a href="#61-备份策略与dba职责" class="hash-link" aria-label="6.1 备份策略与DBA职责的直接链接" title="6.1 备份策略与DBA职责的直接链接">​</a></h3>
+<ul>
+<li><strong>备份策略</strong>: 需明确备份时间、周期和方式（全备、增量；逻辑、物理）。</li>
+<li><strong>DBA职责</strong>: 设计策略、检查备份、定期恢复演练、故障恢复。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="62-逻辑备份mysqldump">6.2 逻辑备份：mysqldump<a href="#62-逻辑备份mysqldump" class="hash-link" aria-label="6.2 逻辑备份：mysqldump的直接链接" title="6.2 逻辑备份：mysqldump的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>原理</strong>: 将数据库对象和数据导出为SQL语句。</p>
+</li>
+<li>
+<p><strong>优点</strong>: 可读性强，压缩比高，跨平台兼容性好。</p>
+</li>
+<li>
+<p><strong>缺点</strong>: 速度慢，不适合大数据量场景。</p>
+</li>
+<li>
+<p><strong>热备命令</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">mysqldump -A -R -E --triggers --master-data=2 --single-transaction | gzip &gt; /path/full.sql.gz</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="63-物理备份percona-xtrabackup">6.3 物理备份：Percona XtraBackup<a href="#63-物理备份percona-xtrabackup" class="hash-link" aria-label="6.3 物理备份：Percona XtraBackup的直接链接" title="6.3 物理备份：Percona XtraBackup的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>原理</strong>: 直接拷贝数据文件，速度极快。</p>
+</li>
+<li>
+<p><strong>优点</strong>: 备份和恢复速度快，支持热备和增量备份。</p>
+</li>
+<li>
+<p><strong>全量备份与恢复</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 备份</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innobackupex --user=root --password=123 /opt/full</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 恢复</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innobackupex --apply-log /opt/full</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innobackupex --copy-back /opt/full</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chown -R mysql.mysql /data/3306/data</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">systemctl start mysqld</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>增量备份与恢复</strong>: 增量备份只拷贝自上次备份以来发生变化的数据页，恢复时需将所有增量按顺序合并到全备中。</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第七章主从复制">第七章：主从复制<a href="#第七章主从复制" class="hash-link" aria-label="第七章：主从复制的直接链接" title="第七章：主从复制的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="71-复制原理与线程">7.1 复制原理与线程<a href="#71-复制原理与线程" class="hash-link" aria-label="7.1 复制原理与线程的直接链接" title="7.1 复制原理与线程的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>原理</strong>: 从库（Replica）的<strong>IO线程</strong>从主库（Source）拉取binlog并写入本地的<strong>Relay Log</strong>，<strong>SQL线程</strong>读取Relay Log并重放其中的事件。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">+----------------+                            +----------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|  主库 (Source) |                            |  从库 (Replica)|</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+----------------+                            +----------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|                |--(1) 主库DUMP线程发送binlog--&gt;|                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|    Binlog      |&lt;---------------------------|    IO Thread   |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|                |                            |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+----------------+                            +-------+--------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                      | (2) 写入</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                      v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                +-------+--------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |   Relay Log    |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                +-------+--------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                      | (3) 读取并重放</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                      v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                +-------+--------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |   SQL Thread   |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                +----------------+</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="72-gtid复制模式">7.2 GTID复制模式<a href="#72-gtid复制模式" class="hash-link" aria-label="7.2 GTID复制模式的直接链接" title="7.2 GTID复制模式的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>GTID (Global Transaction ID)</strong>: 全局事务唯一标识，简化了主从切换和故障恢复。</p>
+</li>
+<li>
+<p><strong>开启配置</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[mysqld]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">gtid_mode=ON</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">enforce_gtid_consistency=ON</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>搭建</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">-- 从库配置</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CHANGE MASTER TO MASTER_HOST=&#x27;...&#x27;, MASTER_USER=&#x27;...&#x27;, MASTER_PASSWORD=&#x27;...&#x27;, MASTER_AUTO_POSITION=1;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">START SLAVE;</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="73-延迟从库与过滤复制">7.3 延迟从库与过滤复制<a href="#73-延迟从库与过滤复制" class="hash-link" aria-label="7.3 延迟从库与过滤复制的直接链接" title="7.3 延迟从库与过滤复制的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>延迟从库</strong>: 人为设置从库延迟，用于快速恢复误操作。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">CHANGE MASTER TO MASTER_DELAY = 10800; -- 延迟3小时</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>过滤复制</strong>: 让从库只复制指定的库或表，推荐在从库端配置。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">replicate_do_db = db1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">replicate_ignore_table = db2.t1</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="74-数据一致性保障">7.4 数据一致性保障<a href="#74-数据一致性保障" class="hash-link" aria-label="7.4 数据一致性保障的直接链接" title="7.4 数据一致性保障的直接链接">​</a></h3>
+<ul>
+<li><strong>半同步复制 (Semi-Sync)</strong>: 事务在主库提交后，必须至少有一个从库确认收到binlog，主库才会返回成功给客户端。</li>
+<li><strong>MGR (MySQL Group Replication)</strong>: 官方推出的基于Paxos协议的强一致性方案。</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第三部分mysql架构与扩展">第三部分：MySQL架构与扩展<a href="#第三部分mysql架构与扩展" class="hash-link" aria-label="第三部分：MySQL架构与扩展的直接链接" title="第三部分：MySQL架构与扩展的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第八章高可用架构-mha">第八章：高可用架构 MHA<a href="#第八章高可用架构-mha" class="hash-link" aria-label="第八章：高可用架构 MHA的直接链接" title="第八章：高可用架构 MHA的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="81-高可用性标准">8.1 高可用性标准<a href="#81-高可用性标准" class="hash-link" aria-label="8.1 高可用性标准的直接链接" title="8.1 高可用性标准的直接链接">​</a></h3>
+<ul>
+<li><strong>99.99% (4个9)</strong>: 年故障约52.6分钟（MHA级别）。</li>
+<li><strong>99.999% (5个9)</strong>: 年故障约5.26分钟（PXC/MGR级别）。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="82-mha-架构与故障切换原理">8.2 MHA 架构与故障切换原理<a href="#82-mha-架构与故障切换原理" class="hash-link" aria-label="8.2 MHA 架构与故障切换原理的直接链接" title="8.2 MHA 架构与故障切换原理的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong>组件</strong>: Manager（管理节点） + Node（数据库节点）。</p>
+</li>
+<li>
+<p><strong>切换原理</strong>:</p>
+<ol>
+<li>Manager监控发现主库宕机。</li>
+<li>从所有从库中选举一个最优的新主库。</li>
+<li>将其他从库缺失的差异binlog从新主库补齐。</li>
+<li>将所有从库指向新的主库，实现故障自动转移。</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">+-----------+      (1) 监控      +-----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|  Manager  |&lt;------------------&gt;| Master (X)| --宕机</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-----------+      (SSH/Repl)    +-----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      |                          /           \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      | (2) 选举新主            /             \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      | (3) 补齐差异binlog     /               \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      | (4) 指向新主          v                 v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-----------+          +-----------+         +-----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| New Master| &lt;------- |  Slave 1  |         |  Slave 2  |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-----------+          +-----------+         +-----------+</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="83-mha-部署与管理">8.3 MHA 部署与管理<a href="#83-mha-部署与管理" class="hash-link" aria-label="8.3 MHA 部署与管理的直接链接" title="8.3 MHA 部署与管理的直接链接">​</a></h3>
+<ol>
+<li><strong>环境准备</strong>: 至少一主两从的MySQL复制环境，所有节点间SSH互信。</li>
+<li><strong>安装软件包</strong>: 所有节点安装<code>mha4mysql-node</code>，Manager节点安装<code>mha4mysql-manager</code>。</li>
+<li><strong>配置MHA</strong>: 创建<code>app1.cnf</code>，定义集群节点信息。</li>
+<li><strong>检查并启动</strong>: 使用<code>masterha_check_*</code>命令检查配置，然后启动<code>masterha_manager</code>。</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第九章读写分离与分布式中间件">第九章：读写分离与分布式中间件<a href="#第九章读写分离与分布式中间件" class="hash-link" aria-label="第九章：读写分离与分布式中间件的直接链接" title="第九章：读写分离与分布式中间件的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="91-读写分离中间件atlas">9.1 读写分离中间件：Atlas<a href="#91-读写分离中间件atlas" class="hash-link" aria-label="9.1 读写分离中间件：Atlas的直接链接" title="9.1 读写分离中间件：Atlas的直接链接">​</a></h3>
+<ul>
+<li><strong>作用</strong>: 奇虎360开源的MySQL代理，可实现读写分离。应用连接Atlas，Atlas将写请求发往主库，读请求分发到从库。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="92-分布式数据库中间件mycat">9.2 分布式数据库中间件：Mycat<a href="#92-分布式数据库中间件mycat" class="hash-link" aria-label="9.2 分布式数据库中间件：Mycat的直接链接" title="9.2 分布式数据库中间件：Mycat的直接链接">​</a></h3>
+<ul>
+<li><strong>作用</strong>: 开源的分布式数据库中间件，支持数据的分库分表，将大型单库MySQL水平扩展为分布式集群。</li>
+<li><strong>核心概念</strong>:
+<ul>
+<li><strong>垂直拆分</strong>: 将不同业务的表拆分到不同的数据库实例上。</li>
+<li><strong>水平拆分</strong>: 将单张大表的数据按某种规则（如取模）拆分到多个物理表中。</li>
+<li><strong>全局表</strong>: 在所有分片上都有一份完整拷贝的表（如字典表）。</li>
+<li><strong>ER分片</strong>: 保证有关联关系的父子表数据落在同一个分片上，避免跨库JOIN。</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第十章nosql缓存数据库-redis">第十章：NoSQL缓存数据库 Redis<a href="#第十章nosql缓存数据库-redis" class="hash-link" aria-label="第十章：NoSQL缓存数据库 Redis的直接链接" title="第十章：NoSQL缓存数据库 Redis的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="101-redis-核心特性与应用场景">10.1 Redis 核心特性与应用场景<a href="#101-redis-核心特性与应用场景" class="hash-link" aria-label="10.1 Redis 核心特性与应用场景的直接链接" title="10.1 Redis 核心特性与应用场景的直接链接">​</a></h3>
+<ul>
+<li><strong>特性</strong>:
+<ul>
+<li>性能极高，基于内存操作。</li>
+<li>数据类型丰富（String, Hash, List, Set, ZSet）。</li>
+<li>支持持久化。</li>
+<li>单线程模型，避免了上下文切换和锁竞争。</li>
+</ul>
+</li>
+<li><strong>场景</strong>: 缓存、计数器、消息队列、排行榜、社交网络等。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="102-redis-持久化与主从复制">10.2 Redis 持久化与主从复制<a href="#102-redis-持久化与主从复制" class="hash-link" aria-label="10.2 Redis 持久化与主从复制的直接链接" title="10.2 Redis 持久化与主从复制的直接链接">​</a></h3>
+<ul>
+<li><strong>持久化</strong>:
+<ul>
+<li><strong>RDB (快照)</strong>: 在指定时间间隔内生成数据集的时间点快照。恢复速度快。</li>
+<li><strong>AOF (追加日志)</strong>: 记录所有写操作命令。数据安全性最高。</li>
+<li><strong>生产建议</strong>: 同时开启RDB和AOF。</li>
+</ul>
+</li>
+<li><strong>主从复制</strong>: 从库向主库发送<code>SYNC</code>命令，主库执行<code>BGSAVE</code>生成RDB并发送给从库，之后持续发送写命令。</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/linuxergx/my-website/tree/master/docs/linux/mysql/MySQL高可用架构实战手册.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-website/docs/category/data-stores"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">数据存储</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-website/docs/linux/mysql/高级SQL"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">MySQL 高级 SQL 与数据库管理</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#目录" class="table-of-contents__link toc-highlight">目录</a></li><li><a href="#第一部分mysql基础核心" class="table-of-contents__link toc-highlight">第一部分：MySQL基础核心</a></li><li><a href="#第一章mysql入门与安装" class="table-of-contents__link toc-highlight">第一章：MySQL入门与安装</a><ul><li><a href="#11-数据库核心概念与体系结构" class="table-of-contents__link toc-highlight">1.1 数据库核心概念与体系结构</a></li><li><a href="#12-mysql版本选择" class="table-of-contents__link toc-highlight">1.2 MySQL版本选择</a></li><li><a href="#13-二进制包安装mysql-57" class="table-of-contents__link toc-highlight">1.3 二进制包安装MySQL 5.7</a></li><li><a href="#14-mysql启动连接与多实例配置" class="table-of-contents__link toc-highlight">1.4 MySQL启动、连接与多实例配置</a></li></ul></li><li><a href="#第二章sql语言深度应用" class="table-of-contents__link toc-highlight">第二章：SQL语言深度应用</a><ul><li><a href="#21-sql语言分类与ddl操作" class="table-of-contents__link toc-highlight">2.1 SQL语言分类与DDL操作</a></li><li><a href="#22-dml操作与数据安全" class="table-of-contents__link toc-highlight">2.2 DML操作与数据安全</a></li><li><a href="#23-dql查询语言核心语法" class="table-of-contents__link toc-highlight">2.3 DQL查询语言核心语法</a></li><li><a href="#24-多表连接查询" class="table-of-contents__link toc-highlight">2.4 多表连接查询</a></li></ul></li><li><a href="#第三章innodb存储引擎与事务" class="table-of-contents__link toc-highlight">第三章：InnoDB存储引擎与事务</a><ul><li><a href="#31-存储引擎概述-innodb-vs-myisam" class="table-of-contents__link toc-highlight">3.1 存储引擎概述 (InnoDB vs MyISAM)</a></li><li><a href="#32-innodb核心特性与体系结构" class="table-of-contents__link toc-highlight">3.2 InnoDB核心特性与体系结构</a></li><li><a href="#33-事务acid特性详解" class="table-of-contents__link toc-highlight">3.3 事务ACID特性详解</a></li><li><a href="#34-事务隔离级别与锁机制" class="table-of-contents__link toc-highlight">3.4 事务隔离级别与锁机制</a></li></ul></li><li><a href="#第四章索引与查询优化" class="table-of-contents__link toc-highlight">第四章：索引与查询优化</a><ul><li><a href="#41-索引基础与b-tree结构" class="table-of-contents__link toc-highlight">4.1 索引基础与B-Tree结构</a></li><li><a href="#42-聚簇索引与辅助索引回表" class="table-of-contents__link toc-highlight">4.2 聚簇索引与辅助索引（回表）</a></li><li><a href="#43-索引设计原则与管理" class="table-of-contents__link toc-highlight">4.3 索引设计原则与管理</a></li><li><a href="#44-执行计划分析-explain" class="table-of-contents__link toc-highlight">4.4 执行计划分析 (EXPLAIN)</a></li></ul></li><li><a href="#第二部分mysql高级运维" class="table-of-contents__link toc-highlight">第二部分：MySQL高级运维</a></li><li><a href="#第五章mysql日志系统详解" class="table-of-contents__link toc-highlight">第五章：MySQL日志系统详解</a><ul><li><a href="#51-错误日志-error-log" class="table-of-contents__link toc-highlight">5.1 错误日志 (Error Log)</a></li><li><a href="#52-二进制日志-binary-log" class="table-of-contents__link toc-highlight">5.2 二进制日志 (Binary Log)</a></li><li><a href="#53-慢查询日志-slow-query-log" class="table-of-contents__link toc-highlight">5.3 慢查询日志 (Slow Query Log)</a></li></ul></li><li><a href="#第六章备份与恢复策略" class="table-of-contents__link toc-highlight">第六章：备份与恢复策略</a><ul><li><a href="#61-备份策略与dba职责" class="table-of-contents__link toc-highlight">6.1 备份策略与DBA职责</a></li><li><a href="#62-逻辑备份mysqldump" class="table-of-contents__link toc-highlight">6.2 逻辑备份：mysqldump</a></li><li><a href="#63-物理备份percona-xtrabackup" class="table-of-contents__link toc-highlight">6.3 物理备份：Percona XtraBackup</a></li></ul></li><li><a href="#第七章主从复制" class="table-of-contents__link toc-highlight">第七章：主从复制</a><ul><li><a href="#71-复制原理与线程" class="table-of-contents__link toc-highlight">7.1 复制原理与线程</a></li><li><a href="#72-gtid复制模式" class="table-of-contents__link toc-highlight">7.2 GTID复制模式</a></li><li><a href="#73-延迟从库与过滤复制" class="table-of-contents__link toc-highlight">7.3 延迟从库与过滤复制</a></li><li><a href="#74-数据一致性保障" class="table-of-contents__link toc-highlight">7.4 数据一致性保障</a></li></ul></li><li><a href="#第三部分mysql架构与扩展" class="table-of-contents__link toc-highlight">第三部分：MySQL架构与扩展</a></li><li><a href="#第八章高可用架构-mha" class="table-of-contents__link toc-highlight">第八章：高可用架构 MHA</a><ul><li><a href="#81-高可用性标准" class="table-of-contents__link toc-highlight">8.1 高可用性标准</a></li><li><a href="#82-mha-架构与故障切换原理" class="table-of-contents__link toc-highlight">8.2 MHA 架构与故障切换原理</a></li><li><a href="#83-mha-部署与管理" class="table-of-contents__link toc-highlight">8.3 MHA 部署与管理</a></li></ul></li><li><a href="#第九章读写分离与分布式中间件" class="table-of-contents__link toc-highlight">第九章：读写分离与分布式中间件</a><ul><li><a href="#91-读写分离中间件atlas" class="table-of-contents__link toc-highlight">9.1 读写分离中间件：Atlas</a></li><li><a href="#92-分布式数据库中间件mycat" class="table-of-contents__link toc-highlight">9.2 分布式数据库中间件：Mycat</a></li></ul></li><li><a href="#第十章nosql缓存数据库-redis" class="table-of-contents__link toc-highlight">第十章：NoSQL缓存数据库 Redis</a><ul><li><a href="#101-redis-核心特性与应用场景" class="table-of-contents__link toc-highlight">10.1 Redis 核心特性与应用场景</a></li><li><a href="#102-redis-持久化与主从复制" class="table-of-contents__link toc-highlight">10.2 Redis 持久化与主从复制</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">知识库</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/linux-ops-summary">技术笔记</a></li><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/fitness-rehab-summary">健康运动</a></li><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/culture-notes">人文笔记</a></li><li class="footer__item"><a href="/my-website/cka-exam/" target="_blank" rel="noopener noreferrer" class="footer__link-item">CKA 模拟考场<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/linuxergx/cka-exam-sim" target="_blank" rel="noopener noreferrer" class="footer__link-item">CKA 模拟 · GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">社区</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/linuxergx" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">更多</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my-website/blog">随笔</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 程少亭的博客, Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

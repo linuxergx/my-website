@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKA 真实模拟考场</title>
+    <style>
+        :root {
+            --header-bg: #34495e;
+            --sidebar-bg: #ffffff;
+            --text-color: #2c3e50;
+            --highlight-color: #c7254e;
+            --highlight-bg: #f9f2f4;
+            --border-color: #dcdde1;
+        }
+
+        body, html { margin: 0; padding: 0; height: 100vh; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #2c3e50; }
+        /* 终端需要执行的命令 ttyd -p 8001 --client-option rendererType=dom -W bash  */
+        /* 顶部导航 */
+        #header { height: 50px; background: var(--header-bg); color: white; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 2px solid #1a252f; z-index: 10; }
+        .controls { display: flex; align-items: center; gap: 10px; }
+        .btn { padding: 5px 15px; cursor: pointer; border-radius: 4px; border: none; font-weight: bold; background: #ecf0f1; color: #2c3e50; transition: 0.2s; }
+        .btn:hover { background: #bdc3c7; }
+        #timer { background: #e74c3c; padding: 5px 15px; border-radius: 4px; font-family: monospace; font-size: 1.2em; min-width: 80px; text-align: center; }
+        
+        /* 主体布局 - Flex容器 */
+        #main { display: flex; height: calc(100vh - 50px); width: 100vw; position: relative; }
+        
+        /* 左侧题目栏 */
+        #sidebar { width: 450px; min-width: 300px; max-width: 800px; background: var(--sidebar-bg); overflow-y: auto; padding: 25px; box-sizing: border-box; position: relative; }
+        
+        /* 拖拽条 */
+        #resizer { width: 8px; background: #4b6584; cursor: col-resize; transition: background 0.3s; z-index: 5; }
+        #resizer:hover { background: #3498db; }
+
+        /* 右侧终端栏 */
+        #terminal { flex: 1; background: black; min-width: 200px; }
+        iframe { width: 100%; height: 100%; border: none; background: #000; }
+
+        /* 内容样式 */
+        h3 { margin-top: 0; color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 10px; font-size: 1.4em; }
+        .context-box { padding: 10px 0; margin-bottom: 15px; font-family: inherit; font-size: 14px; border-bottom: 1px dashed var(--border-color); }
+        .context-box b { color: #7f8c8d; }
+        
+        #content { line-height: 1.7; color: var(--text-color); font-size: 15px; }
+
+        /* 统一代码/高亮样式 - 带点击复制效果 */
+        code {
+            background-color: var(--highlight-bg);
+            color: var(--highlight-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-weight: 600;
+            border: 1px solid #e1e1e8;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+            display: inline-block;
+            margin: 2px 0;
+        }
+        code:hover {
+            background-color: #f0f0f0;
+            border-color: var(--highlight-color);
+        }
+        code:active {
+            transform: scale(0.95);
+        }
+        code::after {
+            content: "Click to Copy";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 2px 6px;
+            font-size: 10px;
+            border-radius: 3px;
+            visibility: hidden;
+            opacity: 0;
+            white-space: nowrap;
+        }
+        code:hover::after {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 警告框 */
+        .warning-box {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* 复制成功的轻提示 */
+        #copy-toast {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #27ae60;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #term-wrap { flex: 1; background: #111; min-width: 200px; position: relative; }
+        #term-frame { width: 100%; height: 100%; border: none; background: #000; display: none; }
+        #term-placeholder {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            padding: 32px; box-sizing: border-box; color: #ecf0f1; text-align: left;
+        }
+        #term-placeholder .box {
+            max-width: 520px; background: #1a252f; border: 1px solid #4b6584; border-radius: 8px; padding: 24px 28px;
+            line-height: 1.6; font-size: 14px;
+        }
+        #term-placeholder h4 { margin: 0 0 12px; color: #3498db; font-size: 1.1em; }
+        #term-placeholder code { cursor: text; }
+        #term-placeholder code:hover::after { display: none; }
+        #term-status { font-size: 12px; opacity: 0.85; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    </style>
+</head>
+<body>
+
+<div id="copy-toast">已成功复制到剪贴板</div>
+
+<header id="header">
+    <div class="controls">
+        <button class="btn" onclick="nav(-1)">&lt; Previous</button>
+        <select id="q-select" onchange="jump(this.value)" style="padding: 4px; border-radius: 4px;"></select>
+        <button class="btn" onclick="nav(1)">Next &gt;</button>
+        <span id="q-idx" style="margin-left: 10px; font-weight: bold;">Question 1 / 16</span>
+    </div>
+    <div class="controls">
+        <label for="term-url" style="font-size:12px;opacity:.85;">网页终端</label>
+        <input id="term-url" type="text" placeholder="ttyd 的 http 地址，不是 SSH"
+               style="width:240px;padding:4px 8px;border-radius:4px;border:1px solid #7f8c8d;font-size:12px;" />
+        <button class="btn" type="button" onclick="applyTerminal()">连接</button>
+        <button class="btn" type="button" onclick="disconnectTerminal()" title="断开右侧终端">断开</button>
+        <span id="term-status">未连接</span>
+        <div id="timer">120:00</div>
+    </div>
+</header>
+
+<main id="main">
+    <section id="sidebar">
+        <h3 id="title">正在初始化...</h3>
+        <div class="context-box" id="context">Loading...</div>
+        <div id="content">正在加载题目内容，请稍候...</div>
+    </section>
+    
+    <div id="resizer"></div>
+
+    <section id="term-wrap">
+        <div id="term-placeholder">
+            <div class="box">
+                <h4>右侧不是 SSH，而是网页终端（ttyd）</h4>
+                <p>本页面<strong>不能</strong>填写 <code>user@host</code> 或 22 端口直接连考试机。浏览器只能嵌套一个 <strong>HTTP/HTTPS 网页终端</strong>。</p>
+                <p>你需要在自己的实验环境里先启动 ttyd，例如：</p>
+                <p><code>ttyd -p 8001 --client-option rendererType=dom -W bash</code></p>
+                <p>然后在顶部填入 <code>http://127.0.0.1:8001/</code>（或实验机可达的 http 地址）再点「连接」。</p>
+                <p>别人没有你的 CKA 集群时：仍可左侧刷题；右侧终端需各自准备环境。</p>
+            </div>
+        </div>
+        <iframe id="term-frame" src="about:blank" title="CKA lab terminal"></iframe>
+    </section>
+</main>
+
+<script src="questions.js"></script>
+<script>
+    let currentIdx = 1;
+    let seconds = 120 * 60;
+    const TOTAL_QUESTIONS = 16;
+
+    // --- 拖拽分栏逻辑 ---
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.getElementById('resizer');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', (e) => {
+        isResizing = true;
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.body.style.cursor = 'default';
+        });
+        document.body.style.cursor = 'col-resize';
+    });
+
+    function handleMouseMove(e) {
+        if (!isResizing) return;
+        const offsetLeft = e.clientX;
+        if (offsetLeft > 300 && offsetLeft < 800) {
+            sidebar.style.width = offsetLeft + 'px';
+        }
+    }
+
+    // --- 全局点击复制逻辑 ---
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'CODE') {
+            const text = e.target.innerText;
+            copyToClipboard(text);
+            showToast();
+        }
+    });
+
+    function copyToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+
+    function showToast() {
+        const toast = document.getElementById('copy-toast');
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2000);
+    }
+
+    // --- 题目渲染逻辑 ---
+    function initSelect() {
+        const select = document.getElementById('q-select');
+        for(let i=1; i<=TOTAL_QUESTIONS; i++) {
+            let opt = document.createElement('option');
+            opt.value = i; 
+            opt.innerText = "Question " + i;
+            select.appendChild(opt);
+        }
+    }
+
+    function render() {
+        if (typeof examQuestions === 'undefined') {
+            document.getElementById('title').innerText = "错误：未加载 questions.js";
+            return;
+        }
+
+        const q = examQuestions[currentIdx];
+        if (!q) return;
+
+        document.getElementById('title').innerText = currentIdx + ". " + q.title;
+        document.getElementById('context').innerHTML = "<b>Context: </b>" + q.context;
+        document.getElementById('content').innerHTML = q.content;
+        
+        document.getElementById('q-idx').innerText = "Question " + currentIdx + " / " + TOTAL_QUESTIONS;
+        document.getElementById('q-select').value = currentIdx;
+        sidebar.scrollTop = 0;
+    }
+
+    function nav(step) {
+        let next = currentIdx + step;
+        if(next >= 1 && next <= TOTAL_QUESTIONS) {
+            currentIdx = next;
+            render();
+        }
+    }
+
+    function jump(val) {
+        currentIdx = parseInt(val);
+        render();
+    }
+
+    // --- 计时器 ---
+    setInterval(() => {
+        if(seconds > 0) {
+            seconds--;
+            let m = Math.floor(seconds / 60);
+            let s = seconds % 60;
+            document.getElementById('timer').innerText = m + ":" + (s < 10 ? '0'+s : s);
+        }
+    }, 1000);
+
+    // --- 网页终端（ttyd HTTP），不是 SSH ---
+    const TERM_KEY = 'cka-exam-term-url';
+    const frame = document.getElementById('term-frame');
+    const placeholder = document.getElementById('term-placeholder');
+    const statusEl = document.getElementById('term-status');
+
+    function normalizeTermUrl(raw) {
+        let url = (raw || '').trim();
+        if (!url) return '';
+        // 拒绝伪装成 SSH 的输入，避免误解
+        if (/^(ssh:\/\/|git@)/i.test(url) || /^[\w.-]+@[\w.-]+/.test(url)) {
+            alert('这里不能填 SSH 地址。请填 ttyd 的 http://IP:端口/');
+            return '';
+        }
+        if (!/^https?:\/\//i.test(url)) url = 'http://' + url;
+        if (!url.endsWith('/')) url += '/';
+        return url;
+    }
+
+    function applyTerminal() {
+        const input = document.getElementById('term-url');
+        const url = normalizeTermUrl(input.value);
+        if (!url) return;
+        input.value = url;
+        localStorage.setItem(TERM_KEY, url);
+        frame.src = url;
+        frame.style.display = 'block';
+        placeholder.style.display = 'none';
+        statusEl.textContent = '已加载 iframe';
+        statusEl.title = url + '（若页面空白，说明该地址浏览器访问不到或不是 ttyd）';
+    }
+
+    function disconnectTerminal() {
+        frame.src = 'about:blank';
+        frame.style.display = 'none';
+        placeholder.style.display = 'flex';
+        statusEl.textContent = '未连接';
+        statusEl.title = '';
+    }
+
+    window.onload = () => {
+        const saved = localStorage.getItem(TERM_KEY) || '';
+        document.getElementById('term-url').value = saved || 'http://127.0.0.1:8001/';
+        // 默认不自动连：避免公网访客去撞别人内网；有保存记录时可手动点连接
+        disconnectTerminal();
+        initSelect();
+        render();
+    };
+</script>
+</body>
+</html>

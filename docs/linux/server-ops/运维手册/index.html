@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-linux/server-ops/运维手册" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Linux系统运维权威手册 | 程少亭的博客</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://linuxergx.github.io/my-website/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://linuxergx.github.io/my-website/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://linuxergx.github.io/my-website/docs/linux/server-ops/运维手册"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Linux系统运维权威手册 | 程少亭的博客"><meta data-rh="true" name="description" content="第一部分：基础入门"><meta data-rh="true" property="og:description" content="第一部分：基础入门"><link data-rh="true" rel="icon" href="/my-website/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://linuxergx.github.io/my-website/docs/linux/server-ops/运维手册"><link data-rh="true" rel="alternate" href="https://linuxergx.github.io/my-website/docs/linux/server-ops/运维手册" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://linuxergx.github.io/my-website/docs/linux/server-ops/运维手册" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"💻 技术笔记","item":"https://linuxergx.github.io/my-website/docs/category/linux-ops-summary"},{"@type":"ListItem","position":2,"name":"平台运维","item":"https://linuxergx.github.io/my-website/docs/category/platform-ops"},{"@type":"ListItem","position":3,"name":"Linux系统运维权威手册","item":"https://linuxergx.github.io/my-website/docs/linux/server-ops/运维手册"}]}</script><link rel="alternate" type="application/rss+xml" href="/my-website/blog/rss.xml" title="程少亭的博客 RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/my-website/blog/atom.xml" title="程少亭的博客 Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="/my-website/assets/css/styles.25456979.css">
+<script src="/my-website/assets/js/runtime~main.345242b9.js" defer="defer"></script>
+<script src="/my-website/assets/js/main.817f86ac.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/my-website/img/logo.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my-website/"><div class="navbar__logo"><img src="/my-website/img/logo.svg" alt="程少亭的博客 Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my-website/img/logo.svg" alt="程少亭的博客 Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">程少亭的博客</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/my-website/docs/category/linux-ops-summary">技术笔记</a><a class="navbar__item navbar__link" href="/my-website/docs/category/fitness-rehab-summary">健康运动</a><a class="navbar__item navbar__link" href="/my-website/docs/category/culture-notes">人文笔记</a><a class="navbar__item navbar__link" href="/my-website/blog">随笔</a><a href="/my-website/cka-exam/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">CKA 模拟<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/linuxergx/my-website" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/my-website/docs/category/linux-ops-summary">💻 技术笔记</a><button aria-label="折叠侧边栏分类 &#x27;💻 技术笔记&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/my-website/docs/category/platform-ops">平台运维</a><button aria-label="折叠侧边栏分类 &#x27;平台运维&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/server-ops/hyper-v-gpu-pv-and-nat">Hyper-V：GPU-PV 与固定 NAT 网络实战</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/server-ops/zabbix-notes">Zabbix 笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my-website/docs/linux/server-ops/运维手册">Linux系统运维权威手册</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/networking/网络知识点集合">运维网络与防火墙核心知识点 (图解版)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/shell/Linux脚本">**第一部分：Linux Shell 脚本编程基础**</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/ansible/Ansible知识点整合">Ansible 学习笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/nginx/Nginx 进阶学习笔记">Nginx 进阶学习笔记</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/tomcat/">Tomcat 运维实战笔记 (图解详尽版)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-website/docs/linux/aliyun/阿里云">服务器与网站搭建学习手册</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/cloud-native">云原生</a><button aria-label="展开侧边栏分类 &#x27;云原生&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/data-stores">数据存储</a><button aria-label="展开侧边栏分类 &#x27;数据存储&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/ai-compute">AI 与算力</a><button aria-label="展开侧边栏分类 &#x27;AI 与算力&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/my-website/docs/category/exam-tools">备考与工具</a><button aria-label="展开侧边栏分类 &#x27;备考与工具&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/my-website/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/my-website/docs/category/linux-ops-summary"><span>💻 技术笔记</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/my-website/docs/category/platform-ops"><span>平台运维</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Linux系统运维权威手册</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Linux系统运维权威手册</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第一部分基础入门">第一部分：基础入门<a href="#第一部分基础入门" class="hash-link" aria-label="第一部分：基础入门的直接链接" title="第一部分：基础入门的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第一章运维与操作系统核心概念">第一章：运维与操作系统核心概念<a href="#第一章运维与操作系统核心概念" class="hash-link" aria-label="第一章：运维与操作系统核心概念的直接链接" title="第一章：运维与操作系统核心概念的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="11-运维工程师的角色与技能">1.1 运维工程师的角色与技能<a href="#11-运维工程师的角色与技能" class="hash-link" aria-label="1.1 运维工程师的角色与技能的直接链接" title="1.1 运维工程师的角色与技能的直接链接">​</a></h4>
+<p>运维工程师（Operations Engineer）是负责维护并确保整个服务的高可用性、稳定性和安全性的专业技术人员。他们不仅要处理日常的服务器管理、故障排查，还要不断优化系统架构，提升部署效率与系统可靠性。</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="12-操作系统概述与linux特点">1.2 操作系统概述与Linux特点<a href="#12-操作系统概述与linux特点" class="hash-link" aria-label="1.2 操作系统概述与Linux特点的直接链接" title="1.2 操作系统概述与Linux特点的直接链接">​</a></h4>
+<p>操作系统（Operating System, OS）是管理计算机硬件与软件资源的程序，是用户与计算机硬件之间的桥梁。</p>
+<p><strong>Linux系统特点</strong>：</p>
+<ul>
+<li><strong>开源</strong>：源代码开放，可自由修改和分发。</li>
+<li><strong>多用户、多任务</strong>：支持多个用户同时登录，并执行多个任务。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="13-linux发展简史与主流发行版">1.3 Linux发展简史与主流发行版<a href="#13-linux发展简史与主流发行版" class="hash-link" aria-label="1.3 Linux发展简史与主流发行版的直接链接" title="1.3 Linux发展简史与主流发行版的直接链接">​</a></h4>
+<ul>
+<li><strong>1969年</strong>：Unix 系统诞生于贝尔实验室。</li>
+<li><strong>1991年</strong>：Linus Torvalds 发布了 Linux 内核。</li>
+<li><strong>主流发行版</strong>：
+<ul>
+<li><strong>Red Hat / CentOS</strong>：企业级应用广泛，稳定性强。</li>
+<li><strong>Ubuntu / Debian</strong>：桌面用户友好，社区活跃。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="14-操作系统核心组成与工作原理">1.4 操作系统核心组成与工作原理<a href="#14-操作系统核心组成与工作原理" class="hash-link" aria-label="1.4 操作系统核心组成与工作原理的直接链接" title="1.4 操作系统核心组成与工作原理的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：用户通过Shell（如Bash）输入命令，Shell将这些命令翻译成系统调用（System Call），并传递给操作系统的核心——内核（Kernel）。内核接收到指令后，驱动相应的硬件（CPU、内存、磁盘等）来完成操作，并将结果返回给Shell，最终显示给用户。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|    应用程序       |  &lt;-- 用户交互层</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        | (发出指令)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|   Shell (解释器)  |  &lt;-- 将命令翻译成系统调用</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        | (发起系统调用)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|    内核 (Kernel)  |  &lt;-- 接收调用，管理硬件</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        | (驱动硬件)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|      硬件层       |  &lt;-- 物理设备执行操作</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+-------------------+</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第二章服务器硬件与系统安装">第二章：服务器硬件与系统安装<a href="#第二章服务器硬件与系统安装" class="hash-link" aria-label="第二章：服务器硬件与系统安装的直接链接" title="第二章：服务器硬件与系统安装的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="21-服务器硬件核心组件">2.1 服务器硬件核心组件<a href="#21-服务器硬件核心组件" class="hash-link" aria-label="2.1 服务器硬件核心组件的直接链接" title="2.1 服务器硬件核心组件的直接链接">​</a></h4>
+<ul>
+<li><strong>CPU</strong>：中央处理器，核心指标为<strong>路数</strong>（物理CPU颗数）和<strong>核心数</strong>。</li>
+<li><strong>内存(Memory)</strong>：临时数据存储区。</li>
+<li><strong>硬盘(Disk)</strong>：永久数据存储。</li>
+<li><strong>RAID卡</strong>：磁盘阵列卡，用于提升磁盘性能或提供数据冗余。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="22-磁盘阵列raid原理详解">2.2 磁盘阵列(RAID)原理详解<a href="#22-磁盘阵列raid原理详解" class="hash-link" aria-label="2.2 磁盘阵列(RAID)原理详解的直接链接" title="2.2 磁盘阵列(RAID)原理详解的直接链接">​</a></h4>
+<p>RAID (独立磁盘冗余阵列) 技术通过数据分发和/或备份，在多块磁盘上实现性能提升和数据冗余。</p>
+<ul>
+<li><strong>RAID 0 (条带化)</strong>: 将数据分成块，并行写入多块磁盘。读写速度最快，但无冗余，任何一块磁盘损坏都会导致所有数据丢失。</li>
+<li><strong>RAID 1 (镜像)</strong>: 将数据完全复制到另一块磁盘。数据安全性最高，但磁盘利用率只有50%。</li>
+<li><strong>RAID 5 (带奇偶校验的条带化)</strong>: 将数据和对应的奇偶校验信息存储到不同的磁盘上。兼顾了性能、成本和安全性，允许一块磁盘损坏。</li>
+<li><strong>RAID 10 (镜像+条带化)</strong>: 先做RAID 1（镜像），再对镜像组做RAID 0（条带化）。性能和安全性都非常高，但成本也是最高的。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="23-操作系统安装部署">2.3 操作系统安装部署<a href="#23-操作系统安装部署" class="hash-link" aria-label="2.3 操作系统安装部署的直接链接" title="2.3 操作系统安装部署的直接链接">​</a></h4>
+<p><strong>关键步骤</strong>：</p>
+<ol>
+<li><strong>配置虚拟网络</strong>：实验环境通常使用VMware的NAT模式。</li>
+<li><strong>加载系统镜像</strong>：选择合适的ISO镜像文件。</li>
+<li><strong>磁盘分区</strong>：
+<ul>
+<li><strong>/boot</strong>：存放引导文件 (200-500MB)。</li>
+<li><strong>swap</strong>：交换分区 (物理内存的1-2倍)。</li>
+<li><strong>/</strong>：根分区。</li>
+</ul>
+</li>
+<li><strong>网络配置</strong>：设置静态IP、网关、DNS。</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第二部分系统管理">第二部分：系统管理<a href="#第二部分系统管理" class="hash-link" aria-label="第二部分：系统管理的直接链接" title="第二部分：系统管理的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第三章基础命令与文件操作">第三章：基础命令与文件操作<a href="#第三章基础命令与文件操作" class="hash-link" aria-label="第三章：基础命令与文件操作的直接链接" title="第三章：基础命令与文件操作的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="31-远程连接与基础命令">3.1 远程连接与基础命令<a href="#31-远程连接与基础命令" class="hash-link" aria-label="3.1 远程连接与基础命令的直接链接" title="3.1 远程连接与基础命令的直接链接">​</a></h4>
+<ul>
+<li><strong>远程连接</strong>：使用Xshell等工具通过SSH协议连接。</li>
+<li><strong>基础命令</strong>：<code>ls</code>, <code>cd</code>, <code>mkdir</code>, <code>touch</code>, <code>rm</code>, <code>cp</code>, <code>mv</code>。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="32-系统目录结构详解">3.2 系统目录结构详解<a href="#32-系统目录结构详解" class="hash-link" aria-label="3.2 系统目录结构详解的直接链接" title="3.2 系统目录结构详解的直接链接">​</a></h4>
+<ul>
+<li><code>/etc</code>：系统配置文件。</li>
+<li><code>/var</code>：经常变化的文件，如日志 (<code>/var/log</code>)。</li>
+<li><code>/proc</code>：虚拟文件系统，内核与进程信息。</li>
+<li><code>/home</code>：普通用户的家目录。</li>
+<li><code>/root</code>：root用户的家目录。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="33-vim-编辑器高级技巧">3.3 <code>vim</code> 编辑器高级技巧<a href="#33-vim-编辑器高级技巧" class="hash-link" aria-label="33-vim-编辑器高级技巧的直接链接" title="33-vim-编辑器高级技巧的直接链接">​</a></h4>
+<ul>
+<li><strong>三种模式</strong>: 命令模式、编辑模式、底行模式。</li>
+<li><strong>常用操作</strong>:
+<ul>
+<li><code>i</code> / <code>a</code> / <code>o</code>: 进入编辑模式。</li>
+<li><code>dd</code>: 删除行。</li>
+<li><code>yy</code>: 复制行。</li>
+<li><code>p</code>: 粘贴。</li>
+<li><code>:wq</code>: 保存并退出。</li>
+<li><code>:q!</code>: 不保存强制退出。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="34-文本处理三剑客grep-sed-awk">3.4 文本处理三剑客：<code>grep</code>, <code>sed</code>, <code>awk</code><a href="#34-文本处理三剑客grep-sed-awk" class="hash-link" aria-label="34-文本处理三剑客grep-sed-awk的直接链接" title="34-文本处理三剑客grep-sed-awk的直接链接">​</a></h4>
+<ul>
+<li><code>grep</code>: 文本搜索工具，用于查找包含指定模式的行。</li>
+<li><code>sed</code>: 流编辑器，用于对文本进行行级别的替换、删除、插入。</li>
+<li><code>awk</code>: 强大的文本分析工具，擅长按列处理文本。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第四章用户与权限管理">第四章：用户与权限管理<a href="#第四章用户与权限管理" class="hash-link" aria-label="第四章：用户与权限管理的直接链接" title="第四章：用户与权限管理的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="41-用户与用户组核心概念">4.1 用户与用户组核心概念<a href="#41-用户与用户组核心概念" class="hash-link" aria-label="4.1 用户与用户组核心概念的直接链接" title="4.1 用户与用户组核心概念的直接链接">​</a></h4>
+<ul>
+<li><strong>用户分类</strong>: 管理员(root)、普通用户、虚拟用户。</li>
+<li><strong>核心文件</strong>:
+<ul>
+<li><code>/etc/passwd</code>: 用户账户信息。</li>
+<li><code>/etc/shadow</code>: 用户密码信息。</li>
+<li><code>/etc/group</code>: 用户组信息。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="42-用户管理实战">4.2 用户管理实战<a href="#42-用户管理实战" class="hash-link" aria-label="4.2 用户管理实战的直接链接" title="4.2 用户管理实战的直接链接">​</a></h4>
+<ul>
+<li><strong>用户命令</strong>: <code>useradd</code>, <code>passwd</code>, <code>usermod</code>, <code>userdel</code>。</li>
+<li><strong>用户组命令</strong>: <code>groupadd</code>, <code>groupmod</code>, <code>groupdel</code>。</li>
+<li><strong>查看用户信息</strong>: <code>id</code>, <code>whoami</code>, <code>w</code>, <code>last</code>。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="43-文件权限深度解析">4.3 文件权限深度解析<a href="#43-文件权限深度解析" class="hash-link" aria-label="4.3 文件权限深度解析的直接链接" title="4.3 文件权限深度解析的直接链接">​</a></h4>
+<ul>
+<li><strong>基本权限 (rwx)</strong>: 读(4)、写(2)、执行(1)。</li>
+<li><code>chmod</code>: 修改文件权限。</li>
+<li><code>chown</code>: 修改文件所有者和所属组。</li>
+<li><strong>特殊权限</strong>:
+<ul>
+<li><strong>SUID (s)</strong>: 执行时临时获得文件所有者的权限。</li>
+<li><strong>SGID (s)</strong>: 新建文件/目录继承父目录的所属组。</li>
+<li><strong>粘滞位 (t)</strong>: 目录下文件只有所有者和root可删除。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="44-文件链接原理软链接与硬链接">4.4 文件链接原理：软链接与硬链接<a href="#44-文件链接原理软链接与硬链接" class="hash-link" aria-label="4.4 文件链接原理：软链接与硬链接的直接链接" title="4.4 文件链接原理：软链接与硬链接的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：Linux文件系统通过<strong>inode</strong>（索引节点）来标识文件。inode存储文件的元数据（权限、所有者、大小等）和指向数据块的指针，而<strong>文件名</strong>则存储在目录的数据块中，仅仅是指向inode的一个标签。</p>
+<ul>
+<li><strong>硬链接 (Hard Link)</strong>: <code>ln source link</code>，创建了一个新的文件名，指向与源文件<strong>相同的inode</strong>。因此，删除源文件不影响硬链接，只有当所有指向该inode的链接都被删除后，数据才会被真正删除。它不能跨文件系统，也不能对目录创建。</li>
+<li><strong>软链接 (Symbolic Link)</strong>: <code>ln -s source link</code>，创建了一个<strong>新的inode和新的文件</strong>，这个文件的内容是源文件的路径。它类似Windows的快捷方式，如果源文件被删除，软链接就会失效。它可以跨文件系统。</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第三部分进阶运维">第三部分：进阶运维<a href="#第三部分进阶运维" class="hash-link" aria-label="第三部分：进阶运维的直接链接" title="第三部分：进阶运维的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第五章系统监控与性能优化">第五章：系统监控与性能优化<a href="#第五章系统监控与性能优化" class="hash-link" aria-label="第五章：系统监控与性能优化的直接链接" title="第五章：系统监控与性能优化的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="51-proc-虚拟文件系统">5.1 /proc 虚拟文件系统<a href="#51-proc-虚拟文件系统" class="hash-link" aria-label="5.1 /proc 虚拟文件系统的直接链接" title="5.1 /proc 虚拟文件系统的直接链接">​</a></h4>
+<ul>
+<li><code>/proc/cpuinfo</code>: CPU信息。</li>
+<li><code>/proc/meminfo</code>: 内存信息。</li>
+<li><code>/proc/loadavg</code>: 系统负载。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="52-基础系统优化策略">5.2 基础系统优化策略<a href="#52-基础系统优化策略" class="hash-link" aria-label="5.2 基础系统优化策略的直接链接" title="5.2 基础系统优化策略的直接链接">​</a></h4>
+<ol>
+<li>
+<p><strong>关闭不必要的服务</strong>：如 <code>firewalld</code>, <code>SELinux</code>。</p>
+</li>
+<li>
+<p><strong>优化YUM源</strong>：更换为国内镜像源。</p>
+</li>
+<li>
+<p><strong>时间同步</strong>：<code>timedatectl set-ntp true</code>。</p>
+</li>
+<li>
+<p><strong>自定义命令提示符(PS1)</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 编辑 ~/.bashrc 文件</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">RED=&#x27;\[\033[01;31m\]&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">GREEN=&#x27;\[\033[01;32m\]&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">YELLOW=&#x27;\[\033[01;33m\]&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">END=&#x27;\[\033[0m\]&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">PS1=&quot;[$RED\u$END@$YELLOW\h$END $GREEN\W$END]\\$ &quot;</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第六章系统服务与自动化任务">第六章：系统服务与自动化任务<a href="#第六章系统服务与自动化任务" class="hash-link" aria-label="第六章：系统服务与自动化任务的直接链接" title="第六章：系统服务与自动化任务的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="61-linux系统启动流程原理-centos-6-vs-7">6.1 Linux系统启动流程原理 (CentOS 6 vs 7)<a href="#61-linux系统启动流程原理-centos-6-vs-7" class="hash-link" aria-label="6.1 Linux系统启动流程原理 (CentOS 6 vs 7)的直接链接" title="6.1 Linux系统启动流程原理 (CentOS 6 vs 7)的直接链接">​</a></h4>
+<ul>
+<li><strong>CentOS 6 (init)</strong>: 采用<code>init</code>进程（PID=1），依赖 <code>/etc/inittab</code> 文件和 <code>rc</code> 脚本，服务按顺序<strong>串行启动</strong>，启动速度较慢。</li>
+<li><strong>CentOS 7 (systemd)</strong>: 采用<code>systemd</code>进程（PID=1），使用 <code>target</code> 单元文件管理服务依赖，可以<strong>并行启动</strong>多个服务，启动速度显著提升。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="62-计划任务-crontab-详解与原理">6.2 计划任务 (Crontab) 详解与原理<a href="#62-计划任务-crontab-详解与原理" class="hash-link" aria-label="6.2 计划任务 (Crontab) 详解与原理的直接链接" title="6.2 计划任务 (Crontab) 详解与原理的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：<code>crond</code>是一个常驻后台的守护进程，它会每分钟检查一次 <code>/var/spool/cron/</code> 目录下各用户的任务文件以及 <code>/etc/crontab</code> 系统任务文件，判断是否有任务需要在此刻执行。</p>
+<ul>
+<li><code>crontab -e</code>: 编辑当前用户的定时任务。</li>
+<li><code>crontab -l</code>: 查看任务。</li>
+</ul>
+<p><strong>格式</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># 分  时  日  月  周  要执行的命令</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># * * * * * command</span><br></span></code></pre></div></div>
+<p><strong>常见错误</strong>：</p>
+<ul>
+<li><strong>命令路径问题</strong>：<code>cron</code>的环境变量非常有限，建议所有命令都使用绝对路径。</li>
+<li><strong>特殊符号转义</strong>：<code>%</code> 在<code>cron</code>中有换行的特殊含义，需要转义为 <code>\%</code>。</li>
+<li><strong>输出重定向</strong>：将输出重定向到 <code>/dev/null 2&gt;&amp;1</code> 避免产生垃圾邮件。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第七章ssh服务深度应用">第七章：SSH服务深度应用<a href="#第七章ssh服务深度应用" class="hash-link" aria-label="第七章：SSH服务深度应用的直接链接" title="第七章：SSH服务深度应用的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="71-ssh原理与文件传输">7.1 SSH原理与文件传输<a href="#71-ssh原理与文件传输" class="hash-link" aria-label="7.1 SSH原理与文件传输的直接链接" title="7.1 SSH原理与文件传输的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：SSH (Secure Shell) 通过非对称加密（公钥/私钥）和对称加密相结合的方式工作。</p>
+<ol>
+<li><strong>握手阶段</strong>：客户端和服务器使用非对称加密协商出一个临时的对称加密密钥。</li>
+<li><strong>会话阶段</strong>：之后的所有通信都使用这个临时的对称密钥进行加密，速度快且安全。</li>
+</ol>
+<ul>
+<li><strong>客户端工具</strong>: <code>ssh</code> (远程登录), <code>scp</code> (远程拷贝)。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="72-ssh密钥认证配置实战">7.2 SSH密钥认证配置实战<a href="#72-ssh密钥认证配置实战" class="hash-link" aria-label="7.2 SSH密钥认证配置实战的直接链接" title="7.2 SSH密钥认证配置实战的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：用户将自己的公钥存放在远程服务器上。登录时，服务器用这个公钥加密一段随机数据发送给客户端，客户端用自己的私钥解密后发回给服务器。服务器验证成功后，即允许登录，全程无需传输密码。</p>
+<p><strong>实验环境</strong>：</p>
+<ul>
+<li><strong>客户端A</strong>: 192.168.1.10</li>
+<li><strong>服务器B</strong>: 192.168.1.20</li>
+</ul>
+<p><strong>操作步骤</strong>：</p>
+<ol>
+<li>
+<p><strong>在客户端A生成密钥对</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># ssh-keygen -t rsa</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 一路回车，会在 ~/.ssh/ 目录下生成 id_rsa (私钥) 和 id_rsa.pub (公钥)</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>将客户端A的公钥拷贝到服务器B</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.1.20</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 需要输入一次服务器B的root密码</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>测试免密登录</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># ssh root@192.168.1.20</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="73-ssh安全优化策略">7.3 SSH安全优化策略<a href="#73-ssh安全优化策略" class="hash-link" aria-label="7.3 SSH安全优化策略的直接链接" title="7.3 SSH安全优化策略的直接链接">​</a></h4>
+<p>编辑 <code>/etc/ssh/sshd_config</code> 文件，进行以下安全加固：</p>
+<ul>
+<li><strong>禁止root用户直接登录</strong>: <code>PermitRootLogin no</code></li>
+<li><strong>更改默认端口</strong>: <code>Port 6666</code></li>
+<li><strong>仅使用密钥认证</strong>: <code>PasswordAuthentication no</code></li>
+<li><strong>加快连接速度</strong>:
+<ul>
+<li><code>UseDNS no</code> (禁止反向DNS解析)</li>
+<li><code>GSSAPIAuthentication no</code> (禁止GSS认证)</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第四部分高级存储与数据同步">第四部分：高级存储与数据同步<a href="#第四部分高级存储与数据同步" class="hash-link" aria-label="第四部分：高级存储与数据同步的直接链接" title="第四部分：高级存储与数据同步的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第八章磁盘与存储管理">第八章：磁盘与存储管理<a href="#第八章磁盘与存储管理" class="hash-link" aria-label="第八章：磁盘与存储管理的直接链接" title="第八章：磁盘与存储管理的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="81-磁盘物理与逻辑结构">8.1 磁盘物理与逻辑结构<a href="#81-磁盘物理与逻辑结构" class="hash-link" aria-label="8.1 磁盘物理与逻辑结构的直接链接" title="8.1 磁盘物理与逻辑结构的直接链接">​</a></h4>
+<ul>
+<li><strong>物理结构</strong>: 盘片、磁头、主轴。</li>
+<li><strong>逻辑结构</strong>: 磁道、扇区、块。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="82-磁盘分区格式化与挂载">8.2 磁盘分区、格式化与挂载<a href="#82-磁盘分区格式化与挂载" class="hash-link" aria-label="8.2 磁盘分区、格式化与挂载的直接链接" title="8.2 磁盘分区、格式化与挂载的直接链接">​</a></h4>
+<ol>
+<li><strong>分区</strong>: <code>fdisk</code> (小于2TB) 或 <code>parted</code> (大于2TB)。</li>
+<li><strong>格式化</strong>: <code>mkfs.xfs /dev/sdb1</code> (创建文件系统)。</li>
+<li><strong>挂载</strong>: <code>mount /dev/sdb1 /data</code>。</li>
+<li><strong>自动挂载</strong>: 编辑 <code>/etc/fstab</code> 文件。</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="83-lvm逻辑卷管理原理与实战">8.3 LVM逻辑卷管理原理与实战<a href="#83-lvm逻辑卷管理原理与实战" class="hash-link" aria-label="8.3 LVM逻辑卷管理原理与实战的直接链接" title="8.3 LVM逻辑卷管理原理与实战的直接链接">​</a></h4>
+<p><strong>原理说明</strong>：LVM在物理磁盘和文件系统之间增加了一个逻辑层。它将多个物理分区（PV）聚合成一个大的存储池（VG），然后按需从这个池中划分出逻辑分区（LV）。由于LV的大小不再受限于单个物理磁盘的大小，因此可以非常方便地进行动态扩容和缩容。</p>
+<p><strong>核心概念</strong>:</p>
+<ul>
+<li><strong>PV (Physical Volume)</strong>: 物理卷。</li>
+<li><strong>VG (Volume Group)</strong>: 卷组，存储池。</li>
+<li><strong>LV (Logical Volume)</strong>: 逻辑卷，从VG中划分。</li>
+<li><strong>PE (Physical Extent)</strong>: 物理扩展单元，VG中最小存储块。</li>
+</ul>
+<p><strong>实验环境</strong>：</p>
+<ul>
+<li><strong>新增磁盘</strong>: <code>/dev/sdb</code> (20G)</li>
+</ul>
+<p><strong>操作流程</strong>:</p>
+<ol>
+<li><code>fdisk /dev/sdb</code>: 创建一个新分区 <code>/dev/sdb1</code>。</li>
+<li><code>pvcreate /dev/sdb1</code>: 将分区初始化为物理卷。</li>
+<li><code>vgcreate vg_data /dev/sdb1</code>: 创建名为 <code>vg_data</code> 的卷组。</li>
+<li><code>lvcreate -n lv_data -L 10G vg_data</code>: 从 <code>vg_data</code> 中创建10G的逻辑卷 <code>lv_data</code>。</li>
+<li><code>mkfs.xfs /dev/vg_data/lv_data</code>: 格式化逻辑卷。</li>
+<li><code>mkdir /data; mount /dev/vg_data/lv_data /data</code>: 挂载使用。</li>
+</ol>
+<p><strong>LVM在线扩容实战</strong>:</p>
+<ol>
+<li><code>lvextend -L +5G /dev/vg_data/lv_data</code>: 将LV扩展5G。</li>
+<li><code>xfs_growfs /data</code>: 将文件系统大小同步到LV大小。</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第九章数据备份与网络存储">第九章：数据备份与网络存储<a href="#第九章数据备份与网络存储" class="hash-link" aria-label="第九章：数据备份与网络存储的直接链接" title="第九章：数据备份与网络存储的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="91-备份策略与工具概述">9.1 备份策略与工具概述<a href="#91-备份策略与工具概述" class="hash-link" aria-label="9.1 备份策略与工具概述的直接链接" title="9.1 备份策略与工具概述的直接链接">​</a></h4>
+<ul>
+<li><strong>全量备份</strong>: 备份所有数据。</li>
+<li><strong>增量备份</strong>: 只备份自上次备份以来发生变化的数据。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="92-rsync远程同步实战案例">9.2 Rsync远程同步实战案例<a href="#92-rsync远程同步实战案例" class="hash-link" aria-label="9.2 Rsync远程同步实战案例的直接链接" title="9.2 Rsync远程同步实战案例的直接链接">​</a></h4>
+<p><strong>场景</strong>: 将NFS服务器 <code>/data</code> 目录的数据，通过Rsync守护进程模式，定时备份到Backup服务器的 <code>/backup</code> 目录。</p>
+<p><strong>实验环境</strong>:</p>
+<ul>
+<li><strong>NFS服务器 (Client)</strong>: 172.16.1.31</li>
+<li><strong>Backup服务器 (Server)</strong>: 172.16.1.41</li>
+</ul>
+<p><strong>1. Backup服务器端配置 (rsync-server)</strong></p>
+<ul>
+<li>
+<p><strong>安装</strong>: <code>yum install -y rsync</code></p>
+</li>
+<li>
+<p><strong>创建配置文件</strong>: <code>vim /etc/rsyncd.conf</code></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">uid = rsync</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">gid = rsync</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">port = 873</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">fake super = yes</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">use chroot = no</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">max connections = 200</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">timeout = 600</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pid file = /var/run/rsyncd.pid</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">lock file = /var/run/rsync.lock</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">log file = /var/log/rsyncd.log</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[backup]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">path = /backup</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">comment = backup dir</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">read only = false</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">hosts allow = 172.16.1.0/24</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">auth users = rsync_backup</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">secrets file = /etc/rsync.password</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>创建用户和密码文件</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">useradd rsync -s /sbin/nologin -M</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo &quot;rsync_backup:123456&quot; &gt; /etc/rsync.password</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chmod 600 /etc/rsync.password</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>创建备份目录并授权</strong>: <code>mkdir /backup; chown -R rsync.rsync /backup</code></p>
+</li>
+<li>
+<p><strong>启动服务</strong>: <code>systemctl start rsyncd</code></p>
+</li>
+</ul>
+<p><strong>2. NFS客户端配置 (rsync-client)</strong></p>
+<ul>
+<li>
+<p><strong>安装</strong>: <code>yum install -y rsync</code></p>
+</li>
+<li>
+<p><strong>创建密码文件</strong>: <code>echo &quot;123456&quot; &gt; /etc/rsync.password; chmod 600 /etc/rsync.password</code></p>
+</li>
+<li>
+<p><strong>执行推送命令</strong>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">rsync -avz /data/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="93-nfs-网络文件系统配置">9.3 NFS 网络文件系统配置<a href="#93-nfs-网络文件系统配置" class="hash-link" aria-label="9.3 NFS 网络文件系统配置的直接链接" title="9.3 NFS 网络文件系统配置的直接链接">​</a></h4>
+<p>NFS (Network File System) 允许网络中的计算机之间共享目录和文件。</p>
+<p><strong>服务器端配置</strong>:</p>
+<ol>
+<li>
+<p>安装: <code>yum install -y nfs-utils</code></p>
+</li>
+<li>
+<p>配置 <code>/etc/exports</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">/data   192.168.1.0/24(rw,sync)</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>启动服务: <code>systemctl start nfs-server rpcbind</code></p>
+</li>
+</ol>
+<p><strong>客户端配置</strong>:</p>
+<ol>
+<li>安装: <code>yum install -y nfs-utils</code></li>
+<li>挂载: <code>mount -t nfs [服务器IP]:/data /mnt</code></li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="第五部分web服务与自动化">第五部分：Web服务与自动化<a href="#第五部分web服务与自动化" class="hash-link" aria-label="第五部分：Web服务与自动化的直接链接" title="第五部分：Web服务与自动化的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第十章web服务基础">第十章：Web服务基础<a href="#第十章web服务基础" class="hash-link" aria-label="第十章：Web服务基础的直接链接" title="第十章：Web服务基础的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="101-http协议基础">10.1 HTTP协议基础<a href="#101-http协议基础" class="hash-link" aria-label="10.1 HTTP协议基础的直接链接" title="10.1 HTTP协议基础的直接链接">​</a></h4>
+<p>HTTP (超文本传输协议) 是Web数据交换的基础。</p>
+<ul>
+<li><strong>常见请求方法</strong>: <code>GET</code> (获取资源), <code>POST</code> (提交数据)。</li>
+<li><strong>常见响应状态码</strong>: <code>200</code>, <code>301</code>, <code>403</code>, <code>404</code>, <code>500</code>, <code>502</code>, <code>504</code>。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="102-lnmp架构原理与php安装">10.2 LNMP架构原理与PHP安装<a href="#102-lnmp架构原理与php安装" class="hash-link" aria-label="10.2 LNMP架构原理与PHP安装的直接链接" title="10.2 LNMP架构原理与PHP安装的直接链接">​</a></h4>
+<p>LNMP 指的是 Linux + Nginx + MySQL + PHP。</p>
+<ul>
+<li><strong>工作流程</strong>: Nginx处理静态请求，并将动态请求通过FastCGI转发给PHP-FPM处理。</li>
+<li><strong>PHP安装</strong>:
+<ol>
+<li>安装EPEL源。</li>
+<li>添加PHP的YUM源。</li>
+<li><code>yum install php71w php71w-fpm php71w-mysqlnd ...</code></li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="第十一章自动化运维入门">第十一章：自动化运维入门<a href="#第十一章自动化运维入门" class="hash-link" aria-label="第十一章：自动化运维入门的直接链接" title="第十一章：自动化运维入门的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="111-gitlab与jenkins持续集成">11.1 GitLab与Jenkins持续集成<a href="#111-gitlab与jenkins持续集成" class="hash-link" aria-label="11.1 GitLab与Jenkins持续集成的直接链接" title="11.1 GitLab与Jenkins持续集成的直接链接">​</a></h4>
+<p><strong>持续集成 (CI)</strong> 是一种自动化的软件开发实践。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">+----------+     1. 提交代码     +----------+     2. Webhook触发     +----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| 开发者   |  ----------------&gt;  |  GitLab  |  ----------------&gt;   | Jenkins  |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+----------+                     +----------+                      +----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                      ^                                 | 3. 拉取代码</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                      | 7. 推送状态                     |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                      +---------------------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                                        |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                                        v</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                                    +----------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                                    |  服务器   |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                                                    +----------+</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="附录常见问题与排错">附录：常见问题与排错<a href="#附录常见问题与排错" class="hash-link" aria-label="附录：常见问题与排错的直接链接" title="附录：常见问题与排错的直接链接">​</a></h2>
+<ul>
+<li><strong><code>bash-4.2$</code> 提示符</strong>: 用户家目录下缺少 <code>.bashrc</code> 等配置文件，从 <code>/etc/skel/</code> 目录复制即可。</li>
+<li><strong>Web服务状态码排错</strong>:
+<ul>
+<li><strong>403</strong>: 权限问题。</li>
+<li><strong>404</strong>: 资源不存在。</li>
+<li><strong>502</strong>: 后端服务（如php-fpm）未启动或通信失败。</li>
+<li><strong>504</strong>: 后端服务响应超时。</li>
+</ul>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/linuxergx/my-website/tree/master/docs/linux/server-ops/运维手册.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-website/docs/linux/server-ops/zabbix-notes"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Zabbix 笔记</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-website/docs/linux/networking/网络知识点集合"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">运维网络与防火墙核心知识点 (图解版)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#第一部分基础入门" class="table-of-contents__link toc-highlight">第一部分：基础入门</a><ul><li><a href="#第一章运维与操作系统核心概念" class="table-of-contents__link toc-highlight">第一章：运维与操作系统核心概念</a></li><li><a href="#第二章服务器硬件与系统安装" class="table-of-contents__link toc-highlight">第二章：服务器硬件与系统安装</a></li></ul></li><li><a href="#第二部分系统管理" class="table-of-contents__link toc-highlight">第二部分：系统管理</a><ul><li><a href="#第三章基础命令与文件操作" class="table-of-contents__link toc-highlight">第三章：基础命令与文件操作</a></li><li><a href="#第四章用户与权限管理" class="table-of-contents__link toc-highlight">第四章：用户与权限管理</a></li></ul></li><li><a href="#第三部分进阶运维" class="table-of-contents__link toc-highlight">第三部分：进阶运维</a><ul><li><a href="#第五章系统监控与性能优化" class="table-of-contents__link toc-highlight">第五章：系统监控与性能优化</a></li><li><a href="#第六章系统服务与自动化任务" class="table-of-contents__link toc-highlight">第六章：系统服务与自动化任务</a></li><li><a href="#第七章ssh服务深度应用" class="table-of-contents__link toc-highlight">第七章：SSH服务深度应用</a></li></ul></li><li><a href="#第四部分高级存储与数据同步" class="table-of-contents__link toc-highlight">第四部分：高级存储与数据同步</a><ul><li><a href="#第八章磁盘与存储管理" class="table-of-contents__link toc-highlight">第八章：磁盘与存储管理</a></li><li><a href="#第九章数据备份与网络存储" class="table-of-contents__link toc-highlight">第九章：数据备份与网络存储</a></li></ul></li><li><a href="#第五部分web服务与自动化" class="table-of-contents__link toc-highlight">第五部分：Web服务与自动化</a><ul><li><a href="#第十章web服务基础" class="table-of-contents__link toc-highlight">第十章：Web服务基础</a></li><li><a href="#第十一章自动化运维入门" class="table-of-contents__link toc-highlight">第十一章：自动化运维入门</a></li></ul></li><li><a href="#附录常见问题与排错" class="table-of-contents__link toc-highlight">附录：常见问题与排错</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">知识库</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/linux-ops-summary">技术笔记</a></li><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/fitness-rehab-summary">健康运动</a></li><li class="footer__item"><a class="footer__link-item" href="/my-website/docs/category/culture-notes">人文笔记</a></li><li class="footer__item"><a href="/my-website/cka-exam/" target="_blank" rel="noopener noreferrer" class="footer__link-item">CKA 模拟考场<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/linuxergx/cka-exam-sim" target="_blank" rel="noopener noreferrer" class="footer__link-item">CKA 模拟 · GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">社区</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/linuxergx" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">更多</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my-website/blog">随笔</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 程少亭的博客, Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

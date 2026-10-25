@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>程少亭的博客</title>
+        <link>https://linuxergx.github.io/my-website/blog</link>
+        <description>技术实践与生活随笔：运维、算力、健身与人文</description>
+        <lastBuildDate>Sun, 25 Oct 2026 14:58:51 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2026 程少亭的博客</copyright>
+        <item>
+            <title><![CDATA[博客介绍与导览]]></title>
+            <link>https://linuxergx.github.io/my-website/blog/introduction</link>
+            <guid>https://linuxergx.github.io/my-website/blog/introduction</guid>
+            <pubDate>Sun, 25 Oct 2026 14:58:51 GMT</pubDate>
+            <description><![CDATA[欢迎来到我的知识库！这里记录了我在技术研究和健康管理领域的心得体会与实践经验。]]></description>
+            <content:encoded><![CDATA[<p>欢迎来到我的知识库！这里记录了我在技术研究和健康管理领域的心得体会与实践经验。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-内容分类">🗂️ 内容分类<a href="https://linuxergx.github.io/my-website/blog/introduction#%EF%B8%8F-%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB" class="hash-link" aria-label="🗂️ 内容分类的直接链接" title="🗂️ 内容分类的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-技术探索">💻 技术探索<a href="https://linuxergx.github.io/my-website/blog/introduction#-%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2" class="hash-link" aria-label="💻 技术探索的直接链接" title="💻 技术探索的直接链接">​</a></h3>
+<p>技术文档主要包含以下领域：</p>
+<ul>
+<li><strong>Linux系统运维</strong>
+<ul>
+<li>服务器管理与调优</li>
+<li>容器技术（Docker/K8s）</li>
+<li>数据库运维（MySQL/TiDB）</li>
+<li>网络配置与安全</li>
+</ul>
+</li>
+<li><strong>自动化运维</strong>
+<ul>
+<li>Ansible最佳实践</li>
+<li>Shell脚本编程</li>
+<li>常见问题排查与解决</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-运动健康">🏋️ 运动健康<a href="https://linuxergx.github.io/my-website/blog/introduction#%EF%B8%8F-%E8%BF%90%E5%8A%A8%E5%81%A5%E5%BA%B7" class="hash-link" aria-label="🏋️ 运动健康的直接链接" title="🏋️ 运动健康的直接链接">​</a></h3>
+<p>健康管理内容涵盖：</p>
+<ul>
+<li><strong>专业健身指导</strong>
+<ul>
+<li>训练计划制定</li>
+<li>动作要领详解</li>
+<li>肌肉塑造方案</li>
+</ul>
+</li>
+<li><strong>康复理疗</strong>
+<ul>
+<li>运动损伤预防</li>
+<li>康复训练方案</li>
+<li>身体机能评估</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-文章导航">📚 文章导航<a href="https://linuxergx.github.io/my-website/blog/introduction#-%E6%96%87%E7%AB%A0%E5%AF%BC%E8%88%AA" class="hash-link" aria-label="📚 文章导航的直接链接" title="📚 文章导航的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="博客浏览">博客浏览<a href="https://linuxergx.github.io/my-website/blog/introduction#%E5%8D%9A%E5%AE%A2%E6%B5%8F%E8%A7%88" class="hash-link" aria-label="博客浏览的直接链接" title="博客浏览的直接链接">​</a></h3>
+<ul>
+<li><a href="https://linuxergx.github.io/my-website/blog">最新文章</a> - 查看最新发布的内容</li>
+<li><a href="https://linuxergx.github.io/my-website/blog/archive">完整归档</a> - 浏览所有历史文章</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="文档中心">文档中心<a href="https://linuxergx.github.io/my-website/blog/introduction#%E6%96%87%E6%A1%A3%E4%B8%AD%E5%BF%83" class="hash-link" aria-label="文档中心的直接链接" title="文档中心的直接链接">​</a></h3>
+<ul>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/linux-ops-summary">技术文档</a> - Linux运维相关技术文档</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/fitness-rehab-summary">健康运动</a> - 健身训练与康复知识</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="推荐阅读">推荐阅读<a href="https://linuxergx.github.io/my-website/blog/introduction#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB" class="hash-link" aria-label="推荐阅读的直接链接" title="推荐阅读的直接链接">​</a></h3>
+<ul>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/faq/linux%E7%B3%BB%E7%BB%9F%E5%B8%B8%E8%A7%81%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AD%94%E7%96%91">Linux常见知识点答疑</a> - 系统运维常见问题解答</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/server-ops/%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C">运维手册</a> - 服务器运维实践指南</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/docker-k8s/Docker%E7%AC%94%E8%AE%B0">Docker笔记</a> - 容器技术实战</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/mysql/%E9%AB%98%E7%BA%A7SQL">高级SQL</a> - 数据库进阶技巧</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/fitness/training/19%20%E4%BC%9A%E5%91%98%E8%AE%A1%E5%88%92%E5%88%B6%E5%AE%9A%E4%B8%8E%E5%BC%BA%E5%BA%A6%E6%89%A7%E8%A1%8C%20+%20%E9%AB%98%E7%BA%A7%E8%AE%AD%E7%BB%83%E6%B3%95">会员训练计划</a> - 专业健身指导</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/exercise-rehab-guide">康复笔记</a> - 运动康复指南</li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/ansible/Ansible%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E5%90%88">Ansible知识点整合</a> - 自动化运维实践</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-持续更新中">📖 持续更新中...<a href="https://linuxergx.github.io/my-website/blog/introduction#-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD" class="hash-link" aria-label="📖 持续更新中...的直接链接" title="📖 持续更新中...的直接链接">​</a></h2>
+<p>本站内容会持续更新，欢迎经常访问！如果觉得内容对您有帮助，也欢迎分享给更多的朋友。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[欢迎访问我的知识库]]></title>
+            <link>https://linuxergx.github.io/my-website/blog/welcome</link>
+            <guid>https://linuxergx.github.io/my-website/blog/welcome</guid>
+            <pubDate>Sun, 25 Oct 2026 14:58:51 GMT</pubDate>
+            <description><![CDATA[欢迎来到我的知识库！这里记录了技术研究和健康管理方面的实践经验。]]></description>
+            <content:encoded><![CDATA[<p>欢迎来到我的知识库！这里记录了技术研究和健康管理方面的实践经验。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="内容分类">内容分类<a href="https://linuxergx.github.io/my-website/blog/welcome#%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB" class="hash-link" aria-label="内容分类的直接链接" title="内容分类的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="技术探索">技术探索<a href="https://linuxergx.github.io/my-website/blog/welcome#%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2" class="hash-link" aria-label="技术探索的直接链接" title="技术探索的直接链接">​</a></h3>
+<ul>
+<li>Linux 系统运维、容器（Docker/K8s）、数据库、网络与自动化（Ansible / Shell）</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="运动健康">运动健康<a href="https://linuxergx.github.io/my-website/blog/welcome#%E8%BF%90%E5%8A%A8%E5%81%A5%E5%BA%B7" class="hash-link" aria-label="运动健康的直接链接" title="运动健康的直接链接">​</a></h3>
+<ul>
+<li>健身训练计划与动作要领</li>
+<li>运动损伤预防与康复方案</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="快速导航">快速导航<a href="https://linuxergx.github.io/my-website/blog/welcome#%E5%BF%AB%E9%80%9F%E5%AF%BC%E8%88%AA" class="hash-link" aria-label="快速导航的直接链接" title="快速导航的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="技术文档">技术文档<a href="https://linuxergx.github.io/my-website/blog/welcome#%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3" class="hash-link" aria-label="技术文档的直接链接" title="技术文档的直接链接">​</a></h3>
+<ul>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/linux-ops-summary">Linux 运维笔记总览</a></li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/mysql/MySQL%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C">MySQL 高可用架构实战</a></li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/docker-k8s/Docker%E7%AC%94%E8%AE%B0">Docker 实践指南</a></li>
+<li><a href="https://linuxergx.github.io/my-website/docs/linux/nginx/Nginx%20%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Nginx 进阶学习</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="健身与康复">健身与康复<a href="https://linuxergx.github.io/my-website/blog/welcome#%E5%81%A5%E8%BA%AB%E4%B8%8E%E5%BA%B7%E5%A4%8D" class="hash-link" aria-label="健身与康复的直接链接" title="健身与康复的直接链接">​</a></h3>
+<ul>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/fitness-training-notes">科学训练方案</a></li>
+<li><a href="https://linuxergx.github.io/my-website/docs/category/exercise-rehab-guide">康复训练基础</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="怎么投稿到本站">怎么投稿到本站<a href="https://linuxergx.github.io/my-website/blog/welcome#%E6%80%8E%E4%B9%88%E6%8A%95%E7%A8%BF%E5%88%B0%E6%9C%AC%E7%AB%99" class="hash-link" aria-label="怎么投稿到本站的直接链接" title="怎么投稿到本站的直接链接">​</a></h2>
+<p>把 Markdown 文件放到对应目录后推送到 <code>master</code> 即可自动发布：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>内容</th><th>目录</th></tr></thead><tbody><tr><td>技术笔记</td><td><code>docs/linux/&lt;主题&gt;/</code></td></tr><tr><td>健身训练</td><td><code>docs/fitness/training/</code></td></tr><tr><td>运动康复</td><td><code>docs/fitness/rehab/</code></td></tr></tbody></table>
+<p>侧边栏会按目录自动更新，一般不用改 <code>sidebars.ts</code>。</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[技术已死？真的死了吗？]]></title>
+            <link>https://linuxergx.github.io/my-website/blog/is-tech-dead</link>
+            <guid>https://linuxergx.github.io/my-website/blog/is-tech-dead</guid>
+            <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[本篇文章不涉及贩卖焦虑与带货，也不涉及任何政治立场。所有观点仅为个人见解。]]></description>
+            <content:encoded><![CDATA[<blockquote>
+<p>本篇文章不涉及贩卖焦虑与带货，也不涉及任何政治立场。所有观点仅为个人见解。</p>
+</blockquote>
+<p>近年来，随着 AI 普及，常能听到一种说法：「技术已死」「技术没那么重要了」。仿佛时代一夜之间变了天，程序员与工程师曾经最硬的能力，突然失去了意义。</p>
+<p>冷静想一想，这句话本身就有问题。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="技术已死真的死了吗如死">「技术已死？」真的死了吗？如死。<a href="https://linuxergx.github.io/my-website/blog/is-tech-dead#%E6%8A%80%E6%9C%AF%E5%B7%B2%E6%AD%BB%E7%9C%9F%E7%9A%84%E6%AD%BB%E4%BA%86%E5%90%97%E5%A6%82%E6%AD%BB" class="hash-link" aria-label="「技术已死？」真的死了吗？如死。的直接链接" title="「技术已死？」真的死了吗？如死。的直接链接">​</a></h3>
+<p>技术从来没有「活过」，又谈何「死去」？</p>
+<p><img decoding="async" loading="lazy" alt="img" src="https://linuxergx.github.io/my-website/assets/images/1771882872554-b4be7d60c0fbc6919326bcb62ceb2226.png" width="651" height="806" class="img_ev3q"></p>
+<p>AI 出现之后，「技术已死」成了热议。这让我想起某位技术人：早期做嵌入式 Linux，教程扎实，带过不少人走技术路径；近来言论却越来越极端，从质疑技术价值，到否定过去的努力，甚至传出要出家遁世。这很震撼，也逼人重新发问：技术真的死了吗？</p>
+<p>「如死」借用自郭继承教授的抽象表达——死了？没死？如死。意思是看似死了，又未完全死。技术也类似：死了一半，没死的一半未必更弱，有时反而更关键。下结论之前，不妨先看「一元价值论」的问题——把某一种东西当成人生或社会的唯一锚点。这种活法看似简单高效，一碰到真实世界的复杂性，就容易焦虑，甚至世界观崩塌。</p>
+<p>企业迷信「银弹」，以为一套 ERP 或 CMS 能解决所有管理问题，却忽略协作、文化与市场变化，系统上线后问题丛生，效率反而下降。不少家长把恋爱、结婚、生子当成唯一人生脚本，不考虑个性、时代与压力，矛盾随之而来。象牙塔里若只奉一种思想为圭臬——极端理想主义或极端实用主义——出校门前高谈阔论，出校门后面对灰色地带，就容易出现表里不一的撕裂：表面一套，内心一套。</p>
+<p>原因在于：只用单一准则看世界，等于戴上有色眼镜，忽略多维与不确定。真实世界不是黑白二元，总有灰度、冲突与意外。锚点一失效，焦虑几乎必然。接着便有人开始「否定之否定」——并非冷静反思，而是急于全盘或部分否定过去的自己。问题是：还没分清哪里错了、哪里仍可保留，就滑向另一极端。例如从「技术万能」直接摆到「技术全无意义」；从极端唯物到极端唯心；从「一切为了效率」到「一切为了躺平」。看起来决绝，实则是另一种逃避——不肯拆分问题、重建平衡，结果往往从一个坑跳进另一个坑。</p>
+<p>那么，「技术已死」到底在说什么？不妨把技术拆成几部分看。</p>
+<p><strong>决策。</strong> 包括价值认同、社会接受度、短期与长期效益，以及敏感问题的权衡。开发一个 AI 产品时，功能是否合乎伦理、隐私如何保护、短期收益与长期社会成本如何取舍——这些不是代码能单独决定的，依赖人的综合判断。</p>
+<p><strong>执行。</strong> 许多人（包括我以前）几乎把「技术价值」全部压在干活过程上：写代码、调参、debug、写文档、优化性能、刷题、卷框架。这些曾是技术人的身份符号、努力证明、薪水和自我认同。AI 把其中大量过程基础设施化了，性价比更高，<strong>过程这一层确实在死。</strong></p>
+<p><strong>反馈。</strong> 执行之后要看结果并调整。AI 能帮忙统计与初筛，真正贵重的仍是人的解读：用户流失是缺陷还是体验问题；A/B 测试胜率高，长期品牌是否受损；危机方案会不会火上浇油。经验、直觉与责任感，仍落在人这边。</p>
+<p>从马克思主义哲学看，工具的价值是相对的。《资本论》里的相对剩余价值：新技术（如 AI）刚出现时提高生产率，相关技能需求旺、报酬高；一旦普及、全社会生产力平均化，相对优势缩小，价格（含工资）趋于回落。纺纱机普及前后纺织工的命运，大致同构。AI 也一样：当下稀缺，普及之后就会从「稀缺技能」变成「基础设施」，报酬会向平均靠拢。</p>
+<p>把「AI 替代人」讲成注定结局，本身带一点自我劳动异化的意味——人造出工具，又提前交出劳动的意义与身份感，仿佛自己迟早多余。眼下 AI 更多仍是人的延伸，是趁手的工具；谈到完全替代，关键不只是模型强弱，还有社会共识与分配机制：增量产出归谁、闲下来的人如何安置。这些未谈清楚之前，「替代」多半是想象，而非既成事实。</p>
+<p>辩证法有助于理解这一过程。对立统一：执行过程（量变）与决策判断（质变）相互依存——AI 加速量变，推动质变的仍是人的判断与转化。质量互变：AI 普及是渐进积累，过临界点会引发岗位与行业重组。否定之否定：从过程主导到 AI 辅助主导，再到人的主体性以更高形式回来，是螺旋上升，而非简单死亡。</p>
+<p>马哲本身也是工具，一种分析框架，不宜迷信。工具无绝对好坏，关键在用法是否恰当。朴素唯物与阴阳五行，可与辩证法相通，也能指导一部分养生认知；若奉为唯一真理而排斥现代医学，就会出偏。最终仍应让工具回到工具位：AI 是杠杆，理论是镜子，技术是手段——<strong>人作为主体，去定义、判断、守护价值。</strong></p>
+<p>技术死了没有？如死。死了过程，没死主体。别让单一锚点绑架自己。</p>]]></content:encoded>
+            <category>随笔</category>
+            <category>思考</category>
+        </item>
+        <item>
+            <title><![CDATA[劳动力蓄水池，和被 HPA 调度的人]]></title>
+            <link>https://linuxergx.github.io/my-website/blog/labor-pool-and-hpa</link>
+            <guid>https://linuxergx.github.io/my-website/blog/labor-pool-and-hpa</guid>
+            <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[在经济下行周期中，宏观市场的高效运转，依赖于一个庞大且廉价的劳动力蓄水池。它不仅将人力的流转成本压缩到极致，更通过维持底层适度的匮乏与认知局限，确保了廉价劳动力的充分内卷。对市场而言，劳动力就像是K8s集群中被HPA动态调度的Pod——按需拉起，用完释放，人在其中只是按需调度的弹性耗材。如果说得再极端一些，甚至都不是Pod，只是一个函数：无需管理生命周期，无需占用本地资源。]]></description>
+            <content:encoded><![CDATA[<p>在经济下行周期中，宏观市场的高效运转，依赖于一个庞大且廉价的劳动力蓄水池。它不仅将人力的流转成本压缩到极致，更通过维持底层适度的匮乏与认知局限，确保了廉价劳动力的充分内卷。对市场而言，劳动力就像是K8s集群中被HPA动态调度的Pod——按需拉起，用完释放，人在其中只是按需调度的弹性耗材。如果说得再极端一些，甚至都不是Pod，只是一个函数：无需管理生命周期，无需占用本地资源。</p>
+<p><img decoding="async" loading="lazy" alt="马驹桥" src="https://linuxergx.github.io/my-website/assets/images/majuqiao-01-34db6eebe4bcea0af0434adda27ce155.png" width="1024" height="770" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="马驹桥" src="https://linuxergx.github.io/my-website/assets/images/majuqiao-02-07f6c4f2da0ac456292e91595130ca84.png" width="1024" height="770" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="马驹桥" src="https://linuxergx.github.io/my-website/assets/images/majuqiao-03-07becc6e2cac930712402464c0c6290f.png" width="1024" height="770" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="马驹桥" src="https://linuxergx.github.io/my-website/assets/images/majuqiao-04-77cedc0627fd82cfe5627653326d8f2a.png" width="770" height="1024" class="img_ev3q"></p>
+<p>写字楼里的“优化裁员”与马驹桥的“日结落空”，本质上没有高下之分，只是包裹的糖衣不同。今天被明码标价挑拣的他们，就是下一个下行周期里，随时可能坠落的我们。</p>]]></content:encoded>
+            <category>随笔</category>
+            <category>思考</category>
+        </item>
+        <item>
+            <title><![CDATA[读《人月神话》的一点笔记]]></title>
+            <link>https://linuxergx.github.io/my-website/blog/mythical-man-month-notes</link>
+            <guid>https://linuxergx.github.io/my-website/blog/mythical-man-month-notes</guid>
+            <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[最近把《人月神话》翻了一遍。原书是 1975 年出的，里面不少技术细节（比如打孔卡）早就过时了，但关于估算、加人、沟通成本的说法，现在看仍然成立。下面按几个问题整理一下自己的理解。]]></description>
+            <content:encoded><![CDATA[<p>最近把《人月神话》翻了一遍。原书是 1975 年出的，里面不少技术细节（比如打孔卡）早就过时了，但关于估算、加人、沟通成本的说法，现在看仍然成立。下面按几个问题整理一下自己的理解。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="书在讲什么">书在讲什么<a href="https://linuxergx.github.io/my-website/blog/mythical-man-month-notes#%E4%B9%A6%E5%9C%A8%E8%AE%B2%E4%BB%80%E4%B9%88" class="hash-link" aria-label="书在讲什么的直接链接" title="书在讲什么的直接链接">​</a></h2>
+<p>作者弗雷德里克·布鲁克斯曾负责 IBM System/360 相关项目，后来把教训写成随笔集。它主要不是讲编程技巧，而是讲项目管理里一个常见误判：<strong>把「人力 × 时间」当成可以随意加减的工作量单位。</strong></p>
+<p>给已经延期的项目增加人手，往往不会更快结束。新人需要老人带，沟通成本随人数上升，还有一部分工作根本拆不开、做不了并行。书里用怀孕来打比方：九个女人也不能在一个月里生出孩子。这类判断后来常被叫做 Brooks 定律。</p>
+<p>除此之外，书里反复提到：</p>
+<ul>
+<li>估算偏乐观，集成和系统测试时间容易被低估；</li>
+<li>系统需要有人把住整体概念，不能全靠各方妥协拼出来；</li>
+<li>「第二个系统」特别容易塞进以前没做成的功能，越做越臃肿；</li>
+<li>小而精的团队，往往比人海战术好用；</li>
+<li>没有哪种单一技术能让软件生产力在短时间里提升一个数量级（后来的「没有银弹」论文把这点说得更清楚）；</li>
+<li>第一版常常做不对，要有扔掉重来的准备。</li>
+</ul>
+<p>整体上，这本书是在解释：软件项目里「人多就一定快」为什么经常不成立，以及开发该怎么估得更现实一点。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="有现成方案时还要不要自己写">有现成方案时，还要不要自己写<a href="https://linuxergx.github.io/my-website/blog/mythical-man-month-notes#%E6%9C%89%E7%8E%B0%E6%88%90%E6%96%B9%E6%A1%88%E6%97%B6%E8%BF%98%E8%A6%81%E4%B8%8D%E8%A6%81%E8%87%AA%E5%B7%B1%E5%86%99" class="hash-link" aria-label="有现成方案时，还要不要自己写的直接链接" title="有现成方案时，还要不要自己写的直接链接">​</a></h2>
+<p>按书里的逻辑，重点不在「自己写蠢不蠢」，而在动机和范围。</p>
+<p>如果只是解析、序列化、缓存、HTTP 客户端这类已经很成熟的能力，自己重写一版，维护、测试、边界情况往往都会被低估，最后变成没人愿意接的私货。书里说的第二系统效应，指的就是这种「我觉得我能写得更干净」的膨胀。</p>
+<p>反过来，如果某个能力处在系统核心，现有方案的概念模型对不上，或者许可、性能、安全有硬约束，自己写一层抽象也可能说得通。即便如此，范围也要收紧，别把「一直想做」的功能全塞进去，并且最好想清楚第一版能不能接受被替换。</p>
+<p>比较稳妥的做法是：动手之前先写明白——为什么现有库不行、谁来维护、什么情况下弃用。这些说不清，就先别重开一摊。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="加班">加班<a href="https://linuxergx.github.io/my-website/blog/mythical-man-month-notes#%E5%8A%A0%E7%8F%AD" class="hash-link" aria-label="加班的直接链接" title="加班的直接链接">​</a></h2>
+<p>书里没有单独开章骂加班，但意思很冲：把交付押在加班上，通常不是员工不够拼，是项目早就病了。</p>
+<p>延期很少是最后一周才突然晚一年，多半是一天一天地晚。前面估算拍脑袋、里程碑含糊、测试时间被砍，后面才发现集成根本走不通——这时候让人通宵，解决不了沟通成本和缺陷返工，只会把交付时间往后推。加人救火同理：新人要人带，接口要对齐，会议只多不少，项目更挤。</p>
+<p>再往前追一层，很多烂局在立项时就定了。需求没说清就开工，范围想留「先做着再看」，验收标准全靠口头，干系人各说各话。协作上则是信息不对等：改需求的人不背工期，背工期的人改不了需求；阻塞报上去没人拍板，最后变成现场用睡眠填坑。</p>
+<p>放到现在看更直白一点：<strong>很多加班不是工程问题，而是组织把不确定性、估算错误和战略摇摆转嫁给了个人。</strong> 需求变来变去、目标三个月一换、估算当时就虚，最后都变成「大家再顶一下」。人月神话里的看法大概会是：不要问「大家为什么不能吃苦」，要问「为什么组织非要靠员工吃苦来吸收不确定性」。</p>
+<p>这种结构下，加班不是奋斗，是用个人时间补贴项目管理失职和沟通瘫痪。长期靠加班才能交货，优先怀疑的不是态度，而是：立项时有没有把事说清楚、估算有没有留缓冲、变更有没有人负责、协作卡点有没有人拍板。这些不理，加班只是把失败分摊到每个人身上，看起来每个人都很忙，项目照样烂。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="和现在一点关系">和现在一点关系<a href="https://linuxergx.github.io/my-website/blog/mythical-man-month-notes#%E5%92%8C%E7%8E%B0%E5%9C%A8%E4%B8%80%E7%82%B9%E5%85%B3%E7%B3%BB" class="hash-link" aria-label="和现在一点关系的直接链接" title="和现在一点关系的直接链接">​</a></h2>
+<p>现在写代码的速度比以前快，尤其是有 AI 辅助之后。但需求是否一致、怎么集成、怎么测、怎么回滚、安全和数据是否靠得住，这些成本并没有同比例下降。代码产得快，不代表系统稳得住；如果验收还主要看出码速度，后面的联调和救火只会更忙。</p>
+<p>对我个人也适用：<strong>别把浪漫化自研和熬夜当成长。</strong> 能用成熟方案就先用；进度靠做实里程碑和砍范围，不靠加人月，也不靠夜里多坐几小时假装把病治好了。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="读完之后想补的">读完之后想补的<a href="https://linuxergx.github.io/my-website/blog/mythical-man-month-notes#%E8%AF%BB%E5%AE%8C%E4%B9%8B%E5%90%8E%E6%83%B3%E8%A1%A5%E7%9A%84" class="hash-link" aria-label="读完之后想补的的直接链接" title="读完之后想补的的直接链接">​</a></h2>
+<p>《人月神话》当背景读就够了，两三天翻完即可。以上是读书笔记，之后若实践里有新体会再改。</p>]]></content:encoded>
+            <category>随笔</category>
+            <category>软件工程</category>
+            <category>读书</category>
+        </item>
+    </channel>
+</rss>
